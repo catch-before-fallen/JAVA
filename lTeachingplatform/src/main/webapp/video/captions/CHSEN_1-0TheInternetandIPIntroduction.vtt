@@ -1,0 +1,130 @@
+WEBVTT
+0
+00:00:00.340 --> 00:00:02.080
+第一单元是什么样的
+What kind of the 1st unit?
+
+1
+00:00:02.240 --> 00:00:05.630
+这就是单位 你在了解一些细节的同时 也在了解一个整体
+This is the unit. You're learning a big picture as well as a few details.
+
+2
+00:00:06.000 --> 00:00:08.860
+你将学习互联网的基本工作原理
+You're going to learn the basics of how the Internet works.
+
+3
+00:00:09.040 --> 00:00:12.300
+你甚至还能弄清楚谁是尼克谁是被填满了
+You might even get to figure out which one of us is Nick and which one of us is filled.
+
+4
+00:00:12.900 --> 00:00:19.440
+我们希望帮助你理解为什么互联网是这样设计的 它的一些优点和缺点是什么
+We hope to help you understand why the Internet is designed the way that it is. what are some of its strengths and its weaknesses?
+
+5
+00:00:19.600 --> 00:00:21.110
+我们也教你一些常见的
+We also teach you some of the commonly
+
+6
+00:00:21.440 --> 00:00:26.270
+公认的网络设计原则 如分层 封装和分组交换
+accepted network design principles. such as layering. encapsulation and packet switching.
+
+7
+00:00:26.430 --> 00:00:30.420
+在本单元结束时 你应该能够回答以下问题 什么是互联网
+At the end of this unit. you should be able to answer questions like. what is the Internet?
+
+8
+00:00:30.600 --> 00:00:35.700
+什么是互联网地址 以及如何应用程序 如韦伯Skype和比特术语
+What is an Internet address? And how do applications such as the Webb Skype and bit term?
+
+9
+00:00:35.810 --> 00:00:39.490
+这些原则将帮助您在未来设计更好的网络
+These principles will help you design better networks in the future.
+
+10
+00:00:39.730 --> 00:00:45.330
+在第一单元结束时 你应该熟悉互联网的四层模型
+At the end of this 1st unit. you should be familiar with something called the four layer model of the Internet.
+
+11
+00:00:45.710 --> 00:00:49.410
+它描述了互联网是如何被分解成四个不同的层
+It describes how the Internet is broken down into four distinct layers.
+
+12
+00:00:49.760 --> 00:00:54.340
+你将了解这些层是什么 以及为什么好的网络设计有一个基本原则
+You learn what those layers are and why there are a basic principle of good network design.
+
+13
+00:00:54.600 --> 00:00:57.180
+你将了解互联网的四层是什么 以及它们是如何协同工作的
+You learn what the internet's four layers are and how they work together.
+
+14
+00:00:57.520 --> 00:01:05.810
+您将了解到大多数应用程序都是一个称为传输控制协议(TC)的传输层 以及一些应用程序如何使用它
+You'll learn that most applications is a transport layer called the Transmission Control Protocol. or TC. and how some applications use it.
+
+15
+00:01:06.370 --> 00:01:11.370
+他还将了解到互联网的工作原理是将更新分解为小单位或口袋
+He will also learn that the Internet works by breaking updating to small units cult pockets.
+
+16
+00:01:11.630 --> 00:01:14.830
+例如 当你请求一个网页时 你的计算机会向网络服务器发送一些口袋
+E.g.. when you request a web page. your computer sends some pockets to the web server.
+
+17
+00:01:14.990 --> 00:01:20.320
+互联网决定了这些数据如何到达正确的目的地
+The Internet decides how those pockets of data arrive to the right destination.
+
+18
+00:01:20.500 --> 00:01:24.580
+所以本单元还特别详细地研究了一层
+So this unit also examines one layer in particular in greater detail.
+
+19
+00:01:24.740 --> 00:01:28.540
+你可能听说过IP 互联网协议
+It's the You might have heard of IP the Internet protocol.
+
+20
+00:01:28.840 --> 00:01:33.580
+这是一个以互联网命名的协议 因为它是让整个事情工作的粘合剂
+It's the protocol named after the Internet because it's the glue that lets the whole thing work.
+
+21
+00:01:33.620 --> 00:01:39.670
+您可以更改所有其他层 但要使用Internet 您需要使用Internet协议
+You can change all of the other layers. but to be using the Internet. you need to be using the Internet protocol.
+
+22
+00:01:39.830 --> 00:01:45.230
+在网络实验室 您将了解Internet协议的功能以及它是如何实现的
+At the Network Lab. you will learn about what the Internet protocol does and how it does it.
+
+23
+00:01:45.390 --> 00:01:49.050
+您将了解Internet协议地址及其分配方式
+You will learn about the Internet protocol addresses and how they are assigned.
+
+24
+00:01:49.330 --> 00:01:54.030
+您将开始了解Internet如何根据其Internet地址决定数据包应该采取的路径
+You'll start to learn how the Internet decides the path the packet should take based on its Internet address.
+
+25
+00:01:54.710 --> 00:02:06.070
+最后 我们将向你展示一些软件工具 你可以用来检查你的计算机是如何使用互联网的 这样你就可以在下次浏览网页时应用你在本单元学到的东西
+Finally. we'll show you a few software tools that you can use to inspect how your computer is using the Internet. so you can apply what you've learned in this unit the next time you browse the web.

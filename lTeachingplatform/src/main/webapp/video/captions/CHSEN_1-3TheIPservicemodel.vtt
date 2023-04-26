@@ -1,0 +1,850 @@
+WEBVTT
+0
+00:00:00.060 --> 00:00:04.940
+现在您已经了解了四层Internet模型 我们将重点关注网络层
+Now that you've learned about the four layer Internet model. we're going to focus on the network layer.
+
+1
+00:00:05.160 --> 00:00:07.240
+这是互联网最重要的一层
+This is the most important layer of the Internet.
+
+2
+00:00:07.400 --> 00:00:08.070
+事实上 对很多人来说
+In fact. to many people.
+
+3
+00:00:08.160 --> 00:00:13.900
+这就是互联网 每当我们使用互联网时 我们被要求使用互联网协议发送和
+it is the Internet. Whenever we use the Internet. we were required to use the Internet protocol to send and
+
+4
+00:00:14.260 --> 00:00:20.400
+接收我们的包裹 您还记得我们说过 每一层都为上面的层提供一个服务
+receive our packets. You remember that we say that each layer provides a service to the layer above.
+
+5
+00:00:20.520 --> 00:00:25.360
+为了正确使用一个层 我们需要很好地理解它所提供的服务
+In order to correctly use a layer. we need a good understanding of the service that it provides.
+
+6
+00:00:25.380 --> 00:00:30.260
+因此 在本视频中 我将介绍Internet协议提供的服务
+Therefore. in this video. I'm going to walk through the service provided by the Internet protocol.
+
+7
+00:00:31.460 --> 00:00:34.740
+IP数据报由报头和一些数据组成
+IP Datagrams consist of a header and some data.
+
+8
+00:00:35.280 --> 00:00:40.620
+当传输层有数据要发送时 将传输段交给网络层
+When the transport layer has data to send it. hands a transport segment to the network layer.
+
+9
+00:00:40.780 --> 00:00:47.340
+下面 网络层将传输段放在它创建的新IP数据报中
+Below. the network layer puts the transport segment inside a new IP datagram that it creates.
+
+10
+00:00:47.770 --> 00:00:57.580
+Ip的任务是将数据报发送到Internet的另一端 但是Ip数据报首先必须通过第一个链路到达第一个路由器
+Ip's job is to deliver the datagram to the other end of the Internet. but 1st the IP datagram has to make make it over the 1st link to the 1st router.
+
+11
+00:00:58.460 --> 00:01:06.860
+因此 IP将图表发送到链路层 并将其放入链路帧(如以太网数据包)中 然后将其切到第一个路由器
+So IP sends the diagram to the link layer that puts it inside a link frame. such as an ethernet packet. and then chips it off to the 1st router.
+
+12
+00:01:07.340 --> 00:01:11.580
+IP服务可以用下面列出的四个属性来描述
+The IP service can be characterized by four properties listed here.
+
+13
+00:01:12.290 --> 00:01:14.930
+它将数据报从端主机发送到端主机
+It sends datagrams from end host to end host.
+
+14
+00:01:15.110 --> 00:01:18.210
+它不可靠 但尽最大努力交付数据报
+It is unreliable. but makes a best effort to deliver the datagrams.
+
+15
+00:01:18.600 --> 00:01:22.180
+该网络维护与数据报无关的秘鲁州
+The network maintains no PERU state associated with the datagrams.
+
+16
+00:01:22.380 --> 00:01:30.130
+让我们依次看一下其中的每一个 如表1所示IP是一个数据报服务
+Let's take a look at each one of these. in turn. as listed in the table 1st IP is a datagram service.
+
+17
+00:01:30.130 --> 00:01:36.270
+当我们请求IP为我们发送一些数据时 它会创建一个数据报并将我们的数据放入其中
+When we ask IP to send some data for us. it creates a datagram and puts our data inside.
+
+18
+00:01:36.510 --> 00:01:42.440
+数据报是根据其报头中的信息在网络中单独路由的包
+The datagram is a packet that is routed individually through the network based on the information in its header.
+
+19
+00:01:42.600 --> 00:01:45.140
+换句话说 数据报本身包含
+In other words. the datagram itself contained.
+
+20
+00:01:45.300 --> 00:01:53.150
+报头包含目的地的IP地址 这里我们将其缩写为IPDA 即IP目的地址
+The header contains the IP address of the destination. which we abbreviate here as IPDA. for ip destination address.
+
+21
+00:01:53.530 --> 00:01:57.710
+每个路由器的提供决策都是基于这个IPDA进行的
+And the affording decision decision at each router is based on this IPDA.
+
+22
+00:01:58.800 --> 00:02:08.040
+ladygram报头还包含一个IP源地址(ipsay) 说明数据包来自哪里 以便接收方知道将响应发送到哪里
+The ladygram header also contains an IP source address. or ipsay. saying where the packet came from. so the receiver knows where to send any response.
+
+23
+00:02:09.540 --> 00:02:17.380
+数据报通过网络逐热路由 从一个路由器到另一个路由器 一直从IP源地址到IP目的地址
+Datagrams are routed hot by hot. through the network. from one router to the next. all the way from the IP source address to the IP destination address.
+
+24
+00:02:17.930 --> 00:02:26.150
+稍后我们将更多地了解路由器的工作原理 但现在 知道每个路由器都包含一个提供表就足够了 该表告诉它下一步将数据包发送到哪里
+We'll learn more about how routers work later. but for now. it's enough to know that each router contains a affording table that tells it where to send packets next.
+
+25
+00:02:26.410 --> 00:02:30.870
+当它匹配一个给定的目的地址后 路由器不知道整个路径
+After it matches a given destination address. the router doesn't know the whole path.
+
+26
+00:02:31.090 --> 00:02:46.880
+它只是简单地使用目的地址索引到它自己的fording表中 这样它就可以沿着通往最终目的地的路径将数据包转发到下一个顶部 逐个弹出 一步一步地 数据包只使用目的地址从源到目的地
+It simply uses the destination address to index into its own fording table so that it can forward the packet to the next top along the path towards its final destination. hot by pop. step by step. the packet makes its way from the source to the destination using only the destination address.
+
+27
+00:02:47.040 --> 00:02:56.640
+在数据报中 您经常会听到这样的类比 IP数据报是如何路由的 邮政服务是如何构建路由的
+In the datagram. you'll often hear the analogy made between how IP datagrams are routed and how letters are built routed by the postal service.
+
+28
+00:02:56.640 --> 00:03:09.210
+这是一个很好的类比 在邮政服务中 我们将一封带有目的地地址的信件放入邮箱中 这封信就会被无形地从分拣处一热一热地送到我们手中 直到到达目的地
+It's a good analogy. In the postal service. we put a letter into the mailbox with the address of the destination. and the letter is routed invisiblely to us. hot by hot. from sorting office to sorting office until it reaches its destination.
+
+29
+00:03:09.470 --> 00:03:15.980
+既不是发送者也不是接收者 不需要或不需要知道邮政服务中信件或数据报所经过的路径
+Neither sender or the receiver. No or need to know the path taken by the letters in the postal service or by datagrams.
+
+30
+00:03:16.140 --> 00:03:22.080
+在互联网上 IP服务模型提供了一个服务 其中包含到目的地的路由
+In the Internet. The IP service model provides a service which includes the routing to the destination.
+
+31
+00:03:26.440 --> 00:03:32.740
+IP服务模型的第二个方面 也许最令人惊讶的是 IP是不可靠的
+The 2nd aspect of the IP service model. and perhaps most surprisingly. is IP is unreliable.
+
+32
+00:03:33.060 --> 00:03:37.100
+IP不保证数据包将被发送到目的地
+IP makes no promise that packets will be delivered to the destination.
+
+33
+00:03:37.360 --> 00:03:40.820
+它们可能会延迟交付 顺序不一致 或者根本就没有交付
+They could be delivered late out of sequence or never delivered at all.
+
+34
+00:03:41.140 --> 00:03:44.480
+有可能一个包在途中会被复制 例如
+It's possible that a packet will be duplicated along the way. e.g.
+
+35
+00:03:44.640 --> 00:03:58.080
+一个不正常的路由器 要记住的关键是 IP是不可靠的 不能保证 但它不会因为感觉是这样就任意丢弃数据报
+by a misbehaving router. The key thing to remember is that IP is unreliable and makes no guarantees. but it won't drop datagrams arbitrarily just because it feels like it.
+
+36
+00:03:58.240 --> 00:04:00.060
+前提是你相信网络有感情
+That's if you believe networks have feelings.
+
+37
+00:04:00.360 --> 00:04:06.080
+IP确实承诺只在必要时才丢弃数据报
+IP does make the promise to only drop datagrams if necessary. e.g.
+
+38
+00:04:06.480 --> 00:04:11.580
+路由器中的包提示可能因为拥塞而被填满 迫使路由器丢弃下一个到达的包
+the packet cue in a router might fill up because of congestion. forcing the router to drop the next arriving packet.
+
+39
+00:04:11.620 --> 00:04:13.720
+IP不会尝试重新发送数据
+IP won't make any attempt to resend the data.
+
+40
+00:04:13.780 --> 00:04:17.020
+事实上 IB甚至没有告诉源端数据包被丢弃
+In fact. IB doesn't even tell the source that the packet was dropped.
+
+41
+00:04:17.830 --> 00:04:24.750
+类似地 路由表故障可能导致数据包发送到错误的目的地或错误地复制数据包
+Similarly. a faulty routing table might cause a packet to be sent to the wrong destination or cause a packet to be duplicated by mistake.
+
+42
+00:04:25.100 --> 00:04:30.240
+IP并不保证这些错误不会发生 也不会在错误发生时进行检测
+IP doesn't make any promises that these errors won't happen. nor does it detect them when they do.
+
+43
+00:04:30.540 --> 00:04:35.650
+但IP确实承诺只在必要时犯这些错误并丢弃数据包
+But IP does make the promise to only make these errors and drop packets when necessary.
+
+44
+00:04:37.130 --> 00:04:42.120
+事实上 IP数据报服务非常类似于基本的个人服务
+In fact. the IP datagram service is very much like the basic personal service.
+
+45
+00:04:42.280 --> 00:04:52.140
+基本的邮政服务不保证我们的信件会准时送达 或者 如果我们连续几天连续发送两到三封信 它们会按照发送的顺序收到
+The basic postal service. makes no promise that our letters will be delivered on time. or that. if we send two or three letters back to back on consecutive days. that they'll be received in the order they were sent.
+
+46
+00:04:52.520 --> 00:04:58.740
+而且它根本没有保证一定会送到 除非我们支付更昂贵的内部服务来保证送货
+And it makes no promise they'll be delivered at all. unless we pay for a more expensive inter end service to guarantee delivery.
+
+47
+00:04:59.660 --> 00:05:00.550
+真的 当它来的时候
+Really. when it comes
+
+48
+00:05:00.800 --> 00:05:04.300
+归根结底 IP是一种极其简单 最小的服务
+down to it. IP is an extremely simple. minimal service.
+
+49
+00:05:04.480 --> 00:05:05.190
+它保持没有
+It maintains no
+
+50
+00:05:05.440 --> 00:05:07.610
+状态完全与通信有关
+state at all related to a communication.
+
+51
+00:05:07.770 --> 00:05:10.390
+我们说通信服务是无连接的
+We say that a communication service is connectionless
+
+52
+00:05:10.550 --> 00:05:14.610
+因为它不是从建立某种端到端的状态开始的
+because it doesn't start by establishing some end to end state
+
+53
+00:05:14.750 --> 00:05:24.150
+与通信关联 换句话说 当我们进行一个持续几分钟并由许多IP图组成的Skype呼叫时 IP层维护
+associated with a communication. In other words. when we make a Skype call lasting several minutes and consisting of many IP diagrams. the IP layer maintains
+
+54
+00:05:24.390 --> 00:05:30.250
+不了解调用 只是单独地独立于所有其他数据报路由每个数据报
+no knowledge of the call and simply routes each datagram individually and independently of all the others.
+
+55
+00:05:34.470 --> 00:05:37.630
+您可能想知道为什么IP服务如此简单
+You might be wondering why the IP service is so simple.
+
+56
+00:05:37.730 --> 00:05:41.170
+毕竟 它是整个互联网的基础
+After all. it is the foundation of the entire Internet.
+
+57
+00:05:41.330 --> 00:05:46.090
+互联网用户的每一次通信都必须使用IP服务
+Every communication over the Internet users must use the IP service.
+
+58
+00:05:46.530 --> 00:05:51.730
+考虑到互联网的重要性 让IP变得可靠不是更好吗
+Given how important the Internet is. wouldn't it have been better to make IP reliable?
+
+59
+00:05:52.050 --> 00:05:57.330
+毕竟 我们说过大多数应用程序都需要可靠的 可靠的通信服务
+After all. we did say that most applications want a reliable. bite communication service.
+
+60
+00:05:58.340 --> 00:06:02.980
+IP服务模型设计得如此简单有几个原因
+There are several reasons the IP service model was designed to be so simple.
+
+61
+00:06:04.580 --> 00:06:11.640
+第一 保持网络的简单 哑 矿 更快 更精简 更低的建设和维护成本
+1st. to keep the network simple. dumb and mineral. faster. more streamlined and lower cost to build and maintain.
+
+62
+00:06:12.720 --> 00:06:22.490
+人们相信 如果网络保持简单 功能和需求很少 那么数据包可以非常快速地以低成本传递到目的地
+It was believed that if the network is kept simple with very few features and requirements. then packets could be delivered very quickly and at low cost to the destination.
+
+63
+00:06:22.750 --> 00:06:33.310
+当时的想法是 一个简单的网络可以使用专用的硬件运行得非常快 并且考虑到网络是由分布在世界各地的大量路由器实现的
+The thinking was that a simple network could be made to run very fast using dedicated hardware. and given that the network is implemented by a large number of a routers scattered throughout the network. across the world.
+
+64
+00:06:33.470 --> 00:06:43.170
+如果它们可以保持简单 那么它们可能更可靠 更实惠 更容易维护 并且不需要经常升级
+If they could be kept simple. then they are more likely to be reliable. more affordable. easier to maintain. and will need to be upgraded less often.
+
+65
+00:06:45.050 --> 00:06:47.330
+第二是端到端原则
+2nd is the end to end principle.
+
+66
+00:06:47.520 --> 00:06:57.140
+endend原则指出 在可能的情况下 在通信系统(如Internet)的设计中实现终端主机中的特性
+The Endoend Principle states that where possible. implement features in the end hosts in the design of communication systems such as the Internet.
+
+67
+00:06:57.300 --> 00:07:04.920
+有一个众所周知的原则叫做 何时结束 原则 它说的是 如果你能正确地在终点实现功能 那么你就应该
+There's a well known principle called the end when principle that says. if you can correctly implement features at the end points. then you should.
+
+68
+00:07:05.760 --> 00:07:16.800
+我们将在以后的视频中更深入地研究端到端原理 但基本思想是在端点放置尽可能多的智能 在我们的例子中 源计算机和目标计算机
+We'll study the end to end principle in more depth in later videos. but the basic idea is to place as much intelligence as possible at the endpoints. in our case. the source and destination computers.
+
+69
+00:07:17.220 --> 00:07:29.910
+这可能有几个优点 例如确保功能正确地为应用程序实现 并且如果功能是在终端计算机上的软件中实现的 而不是在Internet的硬件中实现 则更容易发展和改进功能
+This can have several advantages. such as making sure the feature is implemented correctly for the application. and it's easier to evolve and improve a feature if it's implemented in software on end computers. rather than baked into the hardware of the Internet.
+
+70
+00:07:30.630 --> 00:07:39.420
+在互联网的情况下 决定诸如可靠通信和控制拥塞等功能应该由源和目的地在端点完成
+In the case of the Internet. it was decided that features such as reliable communications and controlling congestion should be done at the end points by the source and destination.
+
+71
+00:07:39.580 --> 00:07:41.360
+计算机不是靠网络的
+Computers are not by the network.
+
+72
+00:07:41.800 --> 00:07:55.720
+在当时 这是一个非常激进的建议 与当时最大的现有网络电话系统的设计选择非常不同 电话系统最初是建立在简单的手机和复杂的 功能丰富的电话交换机网络的想法上的
+At the time. it was quite a radical suggestion and very. very different design choice from the telephone system. the largest existing network at the time. which was originally built on the idea of simple handsets and a complicated. feature rich network of telephone switches.
+
+73
+00:07:56.480 --> 00:08:03.090
+在后面的视频中 我们将学习端到端原理 它是通信系统的重要架构原理之一
+In later videos. will be studying the end to end principle as one of the important architectural principles of communication systems.
+
+74
+00:08:03.250 --> 00:08:06.370
+我们将看到许多端到端原则的例子 例如
+We'll see many examples of the end to end principle in action. e.g.
+
+75
+00:08:06.530 --> 00:08:14.510
+当我们研究传输层时 我们将看到终端主机如何在不可靠的IP网络服务上建立可靠的通信服务
+when we study the transport layer. we'll see how the end hosts build a reliable communication service over the unreliable IP network service.
+
+76
+00:08:19.430 --> 00:08:26.300
+简单的I-P服务还允许在其之上构建各种可靠或不可靠的服务
+A simple I-P service also allows a variety of reliable or unreliable services to be built on top.
+
+77
+00:08:27.420 --> 00:08:37.150
+如果I-P是可靠的 换句话说 如果任何丢失的数据包被自动重新传输 那么对于某些服务来说 它就不是理想的
+If I-P was reliable. in other words. if any missing packets were re transmitted automatically. then it would not be ideal for some services. e.g.
+
+78
+00:08:37.310 --> 00:08:45.600
+在真正的实时应用程序中 比如视频聊天 重新传输丢失的数据可能没有意义 因为它可能到达得太迟而没有用处
+in real real time applications. like a video chat. there might be no point in re transmitting lost data. because it might arrive too late to be useful.
+
+79
+00:08:46.560 --> 00:08:52.260
+相反 应用程序可以选择显示一些空白像素或使用之前帧中的像素
+Instead. the application might choose to show a few blank pixels or use the pixels from the frame before.
+
+80
+00:08:52.820 --> 00:08:58.980
+通过不提供任何可靠性保证 IP让应用程序选择它需要的可靠性服务
+By not providing any reliability guarantees. IP lets the application choose the reliability service it needs.
+
+81
+00:09:03.630 --> 00:09:06.270
+最后 IP在任何链路层上工作
+Finally. IP works over any link layer.
+
+82
+00:09:06.430 --> 00:09:09.330
+IP对链路层做了很少的假设
+IP makes very few assumptions about the link layer.
+
+83
+00:09:10.290 --> 00:09:18.490
+IP对链路下面的链路层几乎没有期望 链路可以是有线或无线的 并且不需要重新传输或控制拥塞
+IP makes very little expectation at all of the link layer below the link could be wired or wireless. and requires no re transmission or control of congestion.
+
+84
+00:09:18.640 --> 00:09:25.120
+有些人说IP很简单 对底层的假设很少 你可以在信鸽上运行IP
+Some people have said IP is so simple to make. so few assumptions about the underlying licklayer. that you could run IP over carrier pigeons.
+
+85
+00:09:25.320 --> 00:09:28.220
+事实上 甚至有网友告诉他必须这么做
+In fact. there's even an Internet stander telling he had to do it.
+
+86
+00:09:29.100 --> 00:09:36.650
+让IP在任何链路层上运行都是有意义的 因为互联网是专门用来连接现有网络的
+Making IP run over any link layer made sense. because the Internet was created specifically to interconnect existing networks.
+
+87
+00:09:36.810 --> 00:09:38.630
+事实上 这就是它被称为互联网的原因
+In fact. that's why it was called the Internet.
+
+88
+00:09:43.350 --> 00:09:51.530
+除了基本的 不可靠的 尽力的 无连接的图表服务之外 IP还提供了一些其他精心挑选的服务
+In addition to the basic. unreliable. best effort. connectionless diagram service. IP also provides a few other carefully chosen services.
+
+89
+00:09:51.770 --> 00:10:03.440
+IP的设计师非常努力地在提供使通信工作所需的最低限度之间找到平衡 同时又不提供这样一个根本不起作用的基本服务
+The designers of IP tried very hard to find a balance between providing the bare minimum needed to make communications work. while not providing such a bare bone service that it doesn't really work at all.
+
+90
+00:10:04.350 --> 00:10:08.010
+我将在这里描述五个特性 您将分别了解它们
+I'm going to describe five features here. and you'll learn about each
+
+91
+00:10:08.370 --> 00:10:10.010
+在后面的视频中会讲到
+one of these features in later videos.
+
+92
+00:10:10.170 --> 00:10:17.350
+所以我在这里不会讲太多细节 但我将简要地描述每一个 以便您了解完整的IP服务的范围
+So I won't go into a lot of details here. but I will briefly describe each one so you can understand the scope of the complete IP service.
+
+93
+00:10:18.110 --> 00:10:18.430
+1日
+1st
+
+94
+00:10:18.750 --> 00:10:21.950
+IP试图阻止数据包永远循环
+IP tries to prevent packets from looping forever.
+
+95
+00:10:22.160 --> 00:10:23.110
+因为IP路由器
+Because IP routers
+
+96
+00:10:23.120 --> 00:10:28.830
+通过在因特网上跳 折叠桌和路由器有可能出错
+forward packets hot By hop across the Internet. it is possible for the folding table and a router to be wrong.
+
+97
+00:10:29.160 --> 00:10:33.540
+使一个停车包开始循环 沿着相同的路径循环
+causing a park packet to start looping round and around. following the same path.
+
+98
+00:10:34.340 --> 00:10:40.460
+这种情况最有可能发生在折叠桌发生变化时 它们会暂时进入不一致的状态
+This is most likely to happen when the folding tables are changing. and they temporarily get into an inconsistent state.
+
+99
+00:10:41.430 --> 00:10:51.800
+IP使用一种非常简单的机制来捕捉并删除似乎被困在循环中的数据包 而不是试图阻止循环的发生 这将带来很大的复杂性
+Rather than try to prevent loops from ever happening. which would take a lot of complexity. IP uses a very simple mechanism to catch and then delete packets that appear to be stuck in a loop.
+
+100
+00:10:52.320 --> 00:10:57.200
+要做到这一点 IP只需在每天togram的头部添加一个跳数字段
+To do this. IP simply adds a hop count field in the header of every day togram.
+
+101
+00:10:57.590 --> 00:11:00.910
+它被称为生存时间 或TTL场
+It's called The Time to Live. or TTL Field.
+
+102
+00:11:01.150 --> 00:11:07.320
+它从一个像128这样的数字开始 然后它会随着它经过的每个路由器而递减
+It starts out at a number like 128. and then it's decremented by every router it passes through.
+
+103
+00:11:07.480 --> 00:11:13.020
+如果它达到零 我就得出结论 它一定是被困在循环中 并且圆整器丢弃了数据报
+If it reaches zero. I be concludes that it must be stuck in a loop. and the rounder drops the datagram.
+
+104
+00:11:13.260 --> 00:11:16.020
+这是IP的典型机制
+It's a simple mechanism typical of IP.
+
+105
+00:11:16.350 --> 00:11:18.650
+它不能保证循环不会发生
+It doesn't guarantee that loops won't happen.
+
+106
+00:11:18.910 --> 00:11:23.570
+它只是试图限制网络中无休止循环的数据包造成的破坏
+It just tries to limit the damage caused by a flood of endlessly looping packets in the network.
+
+107
+00:11:27.330 --> 00:11:30.250
+如果数据包太长 IP会对数据包进行分片
+IP will fragment packets if they are too long.
+
+108
+00:11:32.120 --> 00:11:34.420
+IPS设计用于运行任何类型的链路
+IPS designed to run over any kind of link.
+
+109
+00:11:34.580 --> 00:11:37.680
+大多数链路对所能携带的数据包大小有限制
+Most links have a limit on the size of the packets that they can carry.
+
+110
+00:11:37.940 --> 00:11:41.760
+ETHANEC只能携带少于1500口的数据包
+E.G. ETHANEC can only carry packets shorter than 15 hundred bites.
+
+111
+00:11:42.560 --> 00:11:50.260
+如果一个应用程序有超过1500个bite要发送 那么在发送IP数据报之前必须被分解成1500个bite片段
+If an application has more than 15 hundred bites to send. has to be broken into 15 hundred bite pieces before sending in an IP datagram.
+
+112
+00:11:50.460 --> 00:11:59.860
+现在 沿着通往目的地的路径 一个1500个咬的数据报可能需要通过一个只能携带较小数据包的链路 假设有1000个咬
+Now. along the path towards the destination. a 15 hundred bite datagram might need to go over a link that can only carry smaller packets. let's say a thousand bites long.
+
+113
+00:12:00.340 --> 00:12:05.420
+连接这两条链路的路由器将把数据分成两个更小的数据报
+The router connecting the two links will fragment the data into two smaller datagrams.
+
+114
+00:12:06.470 --> 00:12:19.260
+IP提供了一些头字段 可以在一分钟内看到 以帮助分段数据报的路由 以及两个自包含的IP数据报 同时提供了主机重新正确组装数据所需的信息
+IP provides some headfields that will see in a minute to help the route of fragment the datagram. and two self contained IP datagrams. while providing the information the in host needs to correctly reassemble the data again.
+
+115
+00:12:21.420 --> 00:12:27.780
+IP使用小鸡头来减少将数据报发送到错误目的地的机会
+IP uses a head of chicksum to reduce the chances of delivering a datagram to the wrong destination.
+
+116
+00:12:29.140 --> 00:12:35.480
+我被包括检查数据报头中的一些字段 以尝试并确保数据报被交付到正确的位置
+I be include to check some field in the datagram header to try and make sure that datagrams are delivered to the right location.
+
+117
+00:12:36.120 --> 00:12:43.280
+如果由于沿途路由器的错误 数据包被意外频繁地发送到错误的地方 这可能是一个相当大的安全问题
+It could be quite a security problem if packets are accidentally and frequently sent to the wrong place because of a mistake by a router along the way.
+
+118
+00:12:45.210 --> 00:12:49.210
+目前使用的IPN有两个版本
+4th There are two versions of IPN used today.
+
+119
+00:12:49.490 --> 00:12:53.450
+IPV4 目前超过90%的终端主机都在使用
+IPV four. which is used today by over 90% of end hosts.
+
+120
+00:12:53.640 --> 00:12:59.880
+它使用32位地址 你可能很熟悉 因为我们用完了ip4地址
+It uses the 32 bit addresses you're probably familiar with. because we're running out of IP FOUR addresses.
+
+121
+00:13:00.080 --> 00:13:05.900
+互联网正在逐步过渡到使用128位地址的IPV6
+The Internet is in a gradual transition to IPV six. which uses 128 bit addresses.
+
+122
+00:13:06.080 --> 00:13:11.640
+相反 您将在后面的视频中学习IPV4和IPV6的详细信息
+Instead. you'll be learning about the details of IPV four and IPV six in later videos.
+
+123
+00:13:12.240 --> 00:13:17.980
+最后 IP允许将新字段添加到数据报报头实践中
+Finally. IP allows new fields to be added to the datagram header practice.
+
+124
+00:13:18.140 --> 00:13:19.600
+这有点喜忧参半
+This is a bit of a mixed blessing.
+
+125
+00:13:20.000 --> 00:13:26.890
+一方面 它允许将新特性添加到头文件中 原来的标准中没有这些重要特性
+On the one hand. it allows new features to be added to the header that turn out to be important but weren't in the original standard.
+
+126
+00:13:26.970 --> 00:13:36.340
+另一方面 这些字段需要处理 因此需要在路径上的路由器中添加额外的特征 这打破了简单 愚蠢 最小折叠路径的目标
+On the other hand. these fields need processing. and so require extra features in the routers along the path. breaking the goal of a simple. dumb. minimal folding path.
+
+127
+00:13:36.480 --> 00:13:40.160
+实际上 路由器使用或处理的选项非常少
+In practice. very few options are used or processed by the routers.
+
+128
+00:13:43.520 --> 00:13:48.040
+我不会给你们看IPV的前标题 也不会解释所有字段的作用
+I'm not going to show you the IPV foreheader and explain what all the fields do.
+
+129
+00:13:48.410 --> 00:13:52.270
+我不需要你我不需要你记住所有的田地在哪里
+I don't need you to I don't need you to remember where all the fields are.
+
+130
+00:13:52.610 --> 00:14:02.040
+我自己不记得所有的位置 但我希望你们知道每个字段是做什么的 因为这有助于你们理解 理解IP服务模型的范围
+I don't remember all the locations myself. but I do want you to know what each field does. because it helps you understand. understand the scope of the IP service model.
+
+131
+00:14:02.660 --> 00:14:07.680
+这将有助于巩固你的理解 并明确IP并不能发挥多大作用
+It should help cement your understanding and make it really clear that IP doesn't do a lot.
+
+132
+00:14:07.840 --> 00:14:15.360
+这是一个刻意简化的服务 这是一张IPV头的图片 这是目前最常用的头
+It's a deliberately simple service. Here's a picture of an IPV foreheader. which is the most common header in use today.
+
+133
+00:14:15.440 --> 00:14:21.080
+我在这里用32位字画出来了 第0位第1位被发送到线下
+I've drawn it here in 32 bit words. with bit zero The 1st to be sent under the wire.
+
+134
+00:14:21.240 --> 00:14:22.900
+在左上角
+Up in the top left hand corner.
+
+135
+00:14:23.300 --> 00:14:26.500
+阴影部分是IPV前额
+The shaded portion is the IPV forehead.
+
+136
+00:14:26.600 --> 00:14:41.380
+然后是数据 IP头中最重要的字段是我支付的目的地址 源IP地址 协议ID 它告诉我们数据字段中的内容
+It's followed by the data. The most important fields in the IP header are the destination I pay address. the source IP address. the protocol ID that tells us what's inside the data field.
+
+137
+00:14:41.730 --> 00:14:48.750
+本质上 它允许目标主机对到达的数据进行多路分解 将它们发送给正确的代码以处理数据包
+Essentially. it allows the destination host to de multiplex arriving data. sending them to the correct code to process the packet.
+
+138
+00:14:49.040 --> 00:15:03.120
+如果项目协议思想idea的值为6 例如 那么它告诉我们数据包含一个TCP段 因此我们可以安全地将数据报传递给TCP代码 并且它将能够正确地传递该段
+If the project protocol idea idea has the value six. E.G.. then it tells us that the data contains a TCP segment. and so we can safely pass the datagram to the TCP code. and it will be able to pass the segment correctly.
+
+139
+00:15:03.930 --> 00:15:12.590
+互联网分配号码 权威 Iana定义了超过140个不同的协议ID值 代表不同的传输
+The Internet assign numbers. Authority. Iana defines over 140 different values of protocol ID representing different transport
+
+140
+00:15:12.870 --> 00:15:17.230
+协议 版本字段告诉我们I-P的版本
+protocols. The version field tells us which version of I-P
+
+141
+00:15:17.680 --> 00:15:21.900
+我们使用 目前 合法值为IPV4和IPV6
+we're using. Currently. The legal values are IPV four and IPV six.
+
+142
+00:15:22.740 --> 00:15:24.990
+这个报头是一个IPV前额
+This header is an IPV forehead.
+
+143
+00:15:25.190 --> 00:15:27.970
+将在以后的视频中看到IPV六头
+Will see IPV six headers in a later video.
+
+144
+00:15:28.690 --> 00:15:34.320
+包的总长度可以达到64kb 包括报头和所有数据
+The total packet length can be up to 64 kb. including the header and all the data.
+
+145
+00:15:35.200 --> 00:15:38.990
+生存时间(timetolive)或TTL字段可以帮助我们防止意外报文
+The time to live or TTL field helps us to prevent packets accidentally
+
+146
+00:15:39.040 --> 00:15:44.610
+永远在网络中循环 每个路由器都需要减少TTL字段
+looping in the network forever. Every router is required to decrement the TTL field.
+
+147
+00:15:44.770 --> 00:15:47.550
+如果它达到零 路由器应该丢弃数据包
+If it reaches zero. the router should drop the packet.
+
+148
+00:15:47.570 --> 00:15:55.250
+这样 当源发送具有固定TTL值的数据包时 如果它开始循环 就保证被路由器销毁
+This way. when the source sends the packet with a fixed TTL value. it's guaranteed to be destroyed by a router if it starts to travel in loops.
+
+149
+00:15:59.190 --> 00:16:04.390
+有时候 一个数据包对于即将发送的链路来说太长了
+Sometimes a packet is too long for the link it is about to be sent on the packet.
+
+150
+00:16:04.550 --> 00:16:12.210
+如果需要 标识和分片抵消所有帮助路由 将ip数据包分片为更小的 独立的数据报
+ID Flags and fragment offset all help routes to fragment ip packets into smaller. self contained datagrams if need be.
+
+151
+00:16:12.490 --> 00:16:15.570
+我们将在后面的视频中学习碎片化是如何工作的
+We'll learn how fragmentation works in the later video.
+
+152
+00:16:17.130 --> 00:16:21.410
+service字段的类型向路由器提示这个数据包有多重要
+The type of service field gives a hint to routers about how important this packet is.
+
+153
+00:16:22.820 --> 00:16:25.460
+头部的长度告诉我们击球手有多大
+The head of length tells us how big the hitter is.
+
+154
+00:16:25.640 --> 00:16:29.300
+一些报头有可选的额外字段来携带额外的信息
+Some headers have optional extra fields to carry extra information.
+
+155
+00:16:30.340 --> 00:16:39.150
+最后 校验和是在整个报头上计算的 所以以防报头损坏 我们不太可能错误地将数据包发送到错误的目的地
+Finally. a checksum is calculated over the whole header. so just in case the header is corrupted. were not likely to deliver a packet to the wrong destination by mistake.
+
+156
+00:16:41.110 --> 00:16:43.910
+所以总的来说 IP是非常重要的
+So in summary. IP is very important.
+
+157
+00:16:44.130 --> 00:16:47.190
+我们每次在互联网上发送和接收数据包时都使用它
+We use it every time we send and receive packets in the Internet.
+
+158
+00:16:49.150 --> 00:16:52.190
+IP故意提供简单的服务
+IP provides a deliberately simple service.
+
+159
+00:16:52.550 --> 00:16:55.950
+它是一个简单 简单 最小的服务 有四个主要特点
+It is a simple. dumb. minimal service with four main features.
+
+160
+00:16:56.110 --> 00:16:59.010
+它通过互联网发送数据报
+It sends datagrams. hot by help across the Internet.
+
+161
+00:16:59.180 --> 00:17:01.640
+服务不可靠 尽最大努力
+The service is unreliable and best effort.
+
+162
+00:17:01.900 --> 00:17:05.200
+没有秘鲁状态 使得协议无连接
+There's no PERU state. making the protocol connectionless.
+
+163
+00:17:06.800 --> 00:17:15.040
+至此 您应该对IP协议是什么 它的服务模型是什么以及它如何适应Internet的层层次结构感到满意了
+At this point. you should feel comfortable with what the IP protocol is. what its service model is. and how it fits into the Internet. for layer hierarchy.
+
+164
+00:17:15.300 --> 00:17:20.940
+如果你有疑问 我建议你重新看一遍这个视频和之前的那个关于四层模型的视频
+If you have doubts. I suggest you rewatch this video and the one before it. on the four layer model.
+
+165
+00:17:21.620 --> 00:17:26.040
+你还会找到很多关于IPV4如何工作的很好的参考资料
+You'll also find lots of good references about how how IPV four works.
+
+166
+00:17:26.200 --> 00:17:32.400
+任何一本好的网络教科书都会花相当大的篇幅来解释什么是IP以及为什么要这样设计IP
+Any good networking textbook will devote considerable space to explaining what IP is and why it was designed this way.
+
+167
+00:17:32.560 --> 00:17:38.520
+例  计算机网络 第6版的第四章 Coresy和Ross的自上而下方法
+E.g. Chapter four of the 6th edition of Computer Networking. A top down approach by Coresy and Ross.
+
+168
+00:17:38.680 --> 00:17:41.220
+你也可以在维基百科上找到一个简短的解释
+You also find a brief explanation on Wikipedia.
+
+169
+00:17:46.130 --> 00:17:46.190
+I-N-T-E-R-M-A-T-E
+I-N-T-E-R-M-A-T-E.

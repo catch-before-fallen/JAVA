@@ -1,0 +1,232 @@
+<html lang="zh-cn" xmlns:th="http://www.thymeleaf.org"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>答疑 - 计算机网络双语教学平台Demo</title>
+    <!-- Bootstrap -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/default.css}" rel="stylesheet">
+    <!--IE8 css query-->
+    <!--
+    1、解决ie9以下浏览器对html5新增标签的不识别，并导致CSS不起作用的问题。
+    2、让不支持css3 Media Query的浏览器包括IE6-IE8等其他浏览器支持查询。
+    -->
+    <script th:src="@{/js/respond.min.js}"></script>
+</head>
+<body style="overflow-x: hidden;">
+<!--导航begin-->
+<div class="top-navbar navbar navbar-default navbar-fixed-top container nav-container" role="navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">导航栏</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="index-link " th:href="@{home.do}"><span class="glyphicon glyphicon-home"></span>&nbsp;主页</a>
+    </div>
+    <div class="navbar-collapse collapse" style="height: 1px;">
+        <ul id="main-menu" class="nav navbar-nav navbar-left">
+            <li >
+                <a th:href="@{/classplay.do}">课程播放</a>
+            </li>
+            <li >
+                <a th:href="@{/classresource.do}">课件资料</a>
+            </li>
+            <li>
+                <a th:href="@{/homework.do}">作业</a></li>
+            <li>
+                <a th:href="@{/question.do}">答疑</a>
+            </li>
+        </ul>
+        <div th:if="${session.curruser} == null">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="divider"></li>
+                <li><a th:href="@{/login-inner.do}">学生登录</a></li>
+                <li><a th:href="@{/register-inner.do}">注册</a></li>
+                <li><span>&nbsp;&nbsp;</span></li>
+            </ul>
+        </div>
+        <div th:unless="${session.curruser} == null">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="divider"></li>
+                <li><a th:text="${session.curruser.userName}"></a></li>
+                <li><a th:href="@{/logout.do}">退出</a></li>
+                <li><span>&nbsp;&nbsp;</span></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--导航end-->
+<!--列表begin-->
+<div id="list" class="container">
+    <div class="row">
+        <!--左侧列表begin-->
+        <div class="col-md-8">
+            <div class=" panel panel-default">
+                <div class="panel-heading">
+                    <h5 class="panel-title">
+                        <a th:href="@{/home.do}" style="color:#999;">计算机网络双语教学平台Demo</a>
+                        &nbsp;›&nbsp;&nbsp;注册
+                    </h5>
+                </div>
+                <div class="panel-body" style="min-height: 600px;">
+                    <div class="col-md-9 col-md-push-1">
+                        <div id="signUp">
+                                <label for="UserName">用户名：</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                                    <input type="text" class="form-control" id="UserName" placeholder="UserName"  v-model="username">
+
+                                </div>
+                                <label for="Password">密码：</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                                    <input type="password" class="form-control" id="Password" placeholder="Password" v-model="password1">
+                                    <span v-bind:value="text2"></span>
+                                </div>
+                                <label for="Password2">确认密码：</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                                    <input type="password" class="form-control" id="Password2" placeholder="confirm_Password" v-model="password2">
+                                    <span v-bind:value="text3"></span>
+                                </div>
+
+                                <label for="Email">邮箱：</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+                                    <input type="email" class="form-control" id="Email" placeholder="Email" v-model="email">
+                                    <span v-bind:value="text4"></span>
+                                </div>
+                                <div class="text-center">
+                                    <!--注意使用b-button,否则vue不能操作bootstrap-->
+                                    <button class="btn btn-primary " @click="submitForm">注册</button>
+                                </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--左侧列表end-->
+        <!--右侧列表begin-->
+        <div class="col-md-4">
+            <div class=" panel panel-default">
+                <div class="panel-body">
+                    <label>计算机网络双语教学平台</label>
+                    <hr>
+                    <div class="center">
+                        <a th:href="@{/register-inner.do}" class="btn btn-default">现在注册</a>
+                    </div>
+                    <p></p>
+
+                    <div class="center">
+                        <p>已注册同学请<a th:href="@{/login-inner.do}">登录</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--右侧列表end-->
+    </div>
+</div>
+<!--列表end-->
+<!--页脚begin-->
+<div id="footer" class="row">
+    <div>
+        <div class="center">
+            <br>
+            <p>
+                计算机网络双语教学平台 Version: 1.0.0
+            </p>
+        </div>
+        <
+    </div>
+</div>
+<!--页脚end-->
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+
+<script th:src="@{/js/vue.js}"></script>
+<script th:src="@{/js/axios.min.js}"></script>
+<script type="text/javascript">
+
+    var vue = new Vue({
+        el: "#signUp",
+        data:{
+            flag: 0,
+            username: "",
+            email: "",
+            password1: "",
+            password2: "",
+            text1:"",
+            text2:"",
+            text3:"",
+            text4:"",
+
+            student: {}
+        },
+        methods:{
+            submitForm:function () {
+
+                this.flag = 0;
+//                注意加this,表示vue与页面绑定的对象,以及如何判空
+
+                if($.isEmptyObject(this.username)){
+                    this.text1 = "用户名不能为空"
+                }else{
+                    this.flag++;
+                    this.text1=""
+                }
+
+                if($.isEmptyObject(this.password1)){
+                    this.text2 = "密码不能为空"
+                }else{
+                    this.flag++;
+                    this.text2=""
+                }
+
+                if(!(this.password1 == this.password2)){
+                    this.text3 = "密码输入不正确"
+                }else{
+                    this.flag++;
+                    this.text3=""
+                }
+
+                if($.isEmptyObject(this.email)){
+                    this.text4 = "邮箱不能为空"
+                }else{
+                    this.flag++;
+                    this.text4=""
+                }
+                if(this.flag == 4){
+                        axios({
+                            url:"register.do",
+                            method:"POST",
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            data:{
+                                userName: vue.username,
+                                pwd:vue.password2,
+                                email: vue.email
+                            }
+                        }).then(function (value) {
+
+                               alert("恭喜你，注册成功");
+                               window.location.replace(document.referrer)
+
+                        }).catch(function (reason) {
+                            alert("注册失败！");
+                            window.location.reload()
+                        })
+                }
+            }
+        }
+    })
+
+</script>
+
+
+<div id="my_modal_dialog" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div></body>

@@ -1,0 +1,161 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户管理</title>
+    <div th:fragment="common_head">
+        <!-- Bootstrap -->
+        <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+        <link th:href="@{/css/admin/icon.css}" rel="stylesheet">
+        <!--IE8 css query-->
+        <!--
+         1、解决ie9以下浏览器对html5新增标签的不识别，并导致CSS不起作用的问题。
+         2、让不支持css3 Media Query的浏览器包括IE6-IE8等其他浏览器支持查询。
+         -->
+        <script th:src="@{/js/respond.min.js}"></script>
+        <!--<base th:href="@{/}"/>-->
+    </div>
+
+</head>
+<body>
+
+<!--顶部导航begin-->
+<div class="top-navbar navbar navbar-default" style="margin-bottom: 0;" role="navigation" th:fragment="head_nav">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">导航栏</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a th:href="@{/admin/}"><span class="navbar-brand"><span class="glyphicon glyphicon-home"></span>&nbsp;管理后台</span></a>
+    </div>
+
+    <div class="navbar-collapse collapse " style="height: 1px;">
+        <ul id="main-menu" class="nav navbar-nav navbar-right">
+                <li class="dropdown col-md-pull-1">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span th:text="${session.curruser.userName}" class="glyphicon glyphicon-user" style="position:relative;top: 3px;" >123</span>
+                      <i class="glyphicon glyphicon-triangle-bottom"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">个人信息</a></li>
+                        <li><a href="#">设置</a></li>
+                        <li class="divider"></li>
+                        <li><a  th:href="@{/logout.do}">退出</a>
+                        </li>
+                    </ul>
+                </li>
+        </ul>
+    </div>
+</div>
+<!--顶部导航end-->
+<!--左侧边栏begin-->
+<div class="row">
+
+        <div class="col-md-2" th:fragment="left_nav">
+            <div class="sidebar-nav">
+                <ul class="list-group">
+                    <li class="list-group-item"><a th:href="@{/home.do}"  target="_blank" data-target=".dashboard-menu" class="nav-header collapsed" data-toggle="collapse">
+                        <i class=" glyphicon glyphicon-scale"></i>&nbsp;前台站点
+                    </a></li>
+
+
+                    <li class="list-group-item"><a href="#" data-target=".work-menu" class="nav-header collapsed" data-toggle="collapse">
+                        <i class="glyphicon glyphicon-edit"></i>&nbsp;作业编辑<i class="fa-collapse glyphicon glyphicon-triangle-bottom pull-right"></i>
+
+                    </a></li>
+                    <li style="line-height: 0px">
+                        <ul class="work-menu nav nav-list collapse ">
+
+                            <li><a th:href="@{/admin/homework_list.do}"><span class="glyphicon glyphicon-triangle-right"></span> 作业列表</a></li>
+                            <li><a th:href="@{/admin/submit_list.do}"><span class="glyphicon glyphicon-triangle-right"></span> 提交列表</a></li>
+                            <li><a th:href="@{/admin/homework_add.do}"><span class="glyphicon glyphicon-triangle-right"></span> 添加作业</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="list-group-item"><a href="#" data-target=".data-menu" class="nav-header collapsed" data-toggle="collapse"
+                                                   aria-expanded="false">
+                        <i class="glyphicon glyphicon-folder-open"></i>&nbsp;课程编辑<i class="fa-collapse glyphicon glyphicon-triangle-bottom pull-right"></i>
+                    </a></li>
+                    <li style="line-height: 0px">
+                        <ul class="data-menu nav nav-list collapse" aria-expanded="false" style="height: 0px;">
+                            <li><a th:href="@{/admin/course_list.do}"><span class="glyphicon glyphicon-triangle-right"></span> 课程列表</a></li>
+                            <li><a th:href="@{/admin/course_add.do}"><span class="glyphicon glyphicon-triangle-right"></span> 添加课程</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="list-group-item"><a href="#" data-target=".answer-menu" class="nav-header collapsed" data-toggle="collapse"
+                                                   aria-expanded="false">
+                        <i class="glyphicon glyphicon-comment"></i>&nbsp;答疑编辑<i class="fa-collapse glyphicon glyphicon-triangle-bottom pull-right"></i>
+                    </a></li>
+                    <li style="line-height: 0px">
+                        <ul class="answer-menu nav nav-list collapse" aria-expanded="false" style="height: 0px;">
+                            <li><a th:href="@{/admin/question_list.do}"><span class="glyphicon glyphicon-triangle-right"></span> 提问列表</a></li>
+                            <li><a th:href="@{/admin/answer_list.do}"><span class="glyphicon glyphicon-triangle-right"></span> 答疑列表</a></li>
+                            <li><a th:href="@{/admin/question_add.do}"><span class="glyphicon glyphicon-triangle-right"></span> 添加提问</a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-triangle-right"></span> 统计汇总</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="list-group-item"><a href="#" data-target=".system-menu" class="nav-header collapsed" data-toggle="collapse">
+                        <i class="glyphicon glyphicon-cog"></i>&nbsp;用户编辑<i class="fa-collapse glyphicon glyphicon-triangle-bottom pull-right"></i>
+                    </a></li>
+                    <li style="line-height: 0px">
+                        <ul class="system-menu nav nav-list collapse ">
+                            <li><a th:href="@{/admin/student_list.do}"><span class="glyphicon glyphicon-triangle-right"></span> 学生列表</a></li>
+                            <li><a th:href="@{/admin/teacher_list.do}"><span class="glyphicon glyphicon-triangle-right"></span> 教师列表</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!--左侧边栏end-->
+        </div>
+
+    <div class="container-fluid" th:fragment="button">
+        <div class="row">
+            <div class="pull-left">
+                                <span id="submit" class="btn btn-success" style="margin-top: 20px">
+                                   提交
+                                </span>
+                &nbsp;&nbsp;
+                <span id="cancel" class="btn btn-primary" style="margin-top: 20px">
+                                    取消
+                                </span>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>
+
+
+<div id="footer" class="row" th:fragment="footer">
+    <div>
+        <div class="pull-right">
+            <br>
+            <p>
+                计算机网络双语教学平台 Version: 1.0.0
+            </p>
+        </div>
+
+    </div>
+</div>
+
+<div th:fragment="common_srcipt">
+    <!--bootstrap.js-->
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+
+    <!--Vue +Axios-->
+    <script th:src="@{/js/vue.js}"></script>
+    <script th:src="@{/js/axios.min.js}"></script>
+    <script type="text/javascript">
+    </script>
+</div>
+
+
+</body>
+
+</html>

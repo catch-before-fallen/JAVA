@@ -1,0 +1,81 @@
+<html lang="zh-cn" xmlns:th="http://www.thymeleaf.org"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>管理后台-教师登录</title>
+    <!-- Bootstrap -->
+    <link type="text/css" rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/admin/login.css}">
+
+
+</head>
+<body class=" theme-blue">
+
+<!--该段是在线翻译的草稿版本
+    预期实现的功能是在文本区域中输入中文翻译成英文，输入英文翻译成中文
+    -->
+<!--<table>-->
+    <!--<tr><td align="center">-->
+        <!--<form  id="datatrans" action="/WEB-INF/register-inner.do" method="post" target="_blank" name="form1"> 　　-->
+            <!--<div align="left">-->
+                <!--<textarea name="text" cols="70" rows="4"></textarea> 　　-->
+            <!--</div><tr>-->
+    <!--<td align="center">-->
+        <!--<p align="left"> 　　-->
+            <!--<SELECT name="langpair" style="width:350px; "> 　　-->
+                <!--<OPTION class="line-above" value="ch|en">中文到英语</OPTION>-->
+            <!--</SELECT> 　　-->
+            <!--<input name="submit" type="submit" value=" 翻 译 "></p></td></tr>-->
+    <!--</form>-->
+<!--</table>-->
+
+
+<div class="dialog">
+    <form id="login_from" class="panel-body" th:action="@{/teacher-login/login.do}" method="post">
+        <div class="header-title">教师登录</div>
+                <div class="form-group">
+                    <label for="userName">用户名:</label>
+
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                        <input id="userName" type="text" class="form-control" name="userName" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password">密码:</label>
+
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                        <input id="password" type="password" class="form-control span12 form-control" name="password">
+                    </div>
+                </div>
+                <div class="row">
+                    <button type="submit" id="login_btn"  class="btn btn-primary">登&nbsp;录</button>
+
+                    <span th:if="${message != null}" id="login_tips"  th:text="${message}"></span>
+
+
+                </div>
+
+
+
+    </form>
+
+</div>
+
+
+<div class="copy-right">计算机网络双语教学平台 Version: 1.0.0</div>
+
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+
+<script th:src="@{/js/vue.js}"></script>
+<script th:src="@{/js/axios.min.js}"></script>
+
+<script type="text/javascript">
+
+      
+
+</script>
+
+</body></html>

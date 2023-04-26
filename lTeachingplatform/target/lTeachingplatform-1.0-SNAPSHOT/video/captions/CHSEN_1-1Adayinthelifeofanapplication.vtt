@@ -1,0 +1,640 @@
+WEBVTT
+0
+00:00:01.740 --> 00:00:05.980
+最终使网络变得有趣的是使用它们的应用程序
+What ultimately makes networks interesting are the applications that use them.
+
+1
+00:00:06.240 --> 00:00:07.840
+大卫·克拉克 主要贡献者之一
+David Clark. one of the key contributors to
+
+2
+00:00:08.280 --> 00:00:17.750
+互联网的设计 曾经写道 目前网络的指数级增长似乎表明 连接本身就是一种回报 它比任何个人都更有价值
+internet's design. once wrote. the current exponential growth of the network seems to show that connectivity is its own reward. and it is more valuable than any individual
+
+3
+00:00:18.040 --> 00:00:20.420
+应用 如男性或世界韦布
+application. such as male or the worldwide Webb.
+
+4
+00:00:20.880 --> 00:00:24.020
+连通性是指位于世界不同地方的两台计算机
+Connectivity is the idea that two computers in different parts of the world
+
+5
+00:00:24.240 --> 00:00:26.840
+可以相互连接并交换数据
+can connect to one another and exchange data.
+
+6
+00:00:26.880 --> 00:00:32.840
+如果你把你的电脑连接到互联网上 你就可以突然和所有其他连接到互联网的电脑通话
+If you connect your computer to the Internet. you can suddenly talk with all of the other computers connected to the Internet.
+
+7
+00:00:33.040 --> 00:00:39.540
+让我们来看看这到底意味着什么 以及一些现代应用程序 如WorldwideWebb skype和bitTorrent 是如何使用它的
+Let's look at exactly what that means. and how some modern applications. the Worldwide Webb. skype and bit Torrent. use it.
+
+8
+00:00:40.230 --> 00:00:50.120
+网络应用程序的强大之处在于 你可以拥有多台计算机 每台计算机都有自己的私人数据 每台计算机可能由不同的人拥有和控制 并交换信息
+The tremendous power of network applications is that you can have multiple computers. each with their own private data. each perhaps owned and controlled by different people exchange information.
+
+9
+00:00:50.240 --> 00:00:57.990
+本地应用程序只能访问驻留在本地系统上的数据 与此不同 联网应用程序可以在世界各地交换数据
+Unlike your local applications. which can only access data that resides on your local system. networked applications can exchange data across the world.
+
+10
+00:00:58.190 --> 00:01:01.590
+例如 设想使用网络浏览器阅读杂志
+E.g.. think of using a web browser to read a magazine.
+
+11
+00:01:01.710 --> 00:01:06.310
+服务器由出版商运行 并拥有所有的杂志文章
+The server is run by the publisher and has which has all of the magazine articles.
+
+12
+00:01:06.530 --> 00:01:08.980
+可能还有过去所有的文章
+And it might also have all the articles from past issues.
+
+13
+00:01:09.140 --> 00:01:13.440
+随着文章的更正或添加 您可以立即在更新的内容中看到更新的版本
+As articles are corrected or added. you can immediately see the newer versions in newer content.
+
+14
+00:01:13.820 --> 00:01:18.000
+整个后目录的文章可能有太多的免费下载 所以你可以按需加载它们
+Entire back catalog of articles might be too much free to download. so you can load them on demand.
+
+15
+00:01:18.210 --> 00:01:23.110
+如果你没有一个网络 那么你需要有人送你一张DVD 或者你作为野兽与最新的问题
+If you didn't have a network. then you need someone to send you a DVD. or you as beastick with the latest issue.
+
+16
+00:01:23.750 --> 00:01:31.250
+所以基本的模型是你有两台电脑 每一台都在本地运行一个程序 这两个程序通过网络通信
+So the basic model is that you have two computers. each running a program locally. and these two programs communicate over the network.
+
+17
+00:01:31.590 --> 00:01:37.090
+最常用的通信模式是双向可靠的咬码流
+The most common communication model used is a bidirectional. reliable stream of bites.
+
+18
+00:01:38.940 --> 00:01:48.220
+因此 在计算机A上运行的程序A可以写入通过网络传输的数据 这样在计算机B上运行的程序B就可以读取这些数据
+So program A running on computer A can write data which goes over the network. such that then program B running on computer B can read it.
+
+19
+00:01:49.410 --> 00:01:53.770
+类似地 程序B可以写入程序A可以读取的数据
+Similarly. program B can write data that program A can read.
+
+20
+00:01:54.530 --> 00:02:03.960
+还有其他通信模式 这些将在本课程后面讨论 但可靠的定向比特流是目前网络中最常用的通信模式
+There are other modes of communication. which will talk about later in the course. but a reliable. by directional bitestream is by far the most common one used in networks today.
+
+21
+00:02:04.320 --> 00:02:06.640
+让我们来看看这是什么样子
+Let's walk through what this looks like.
+
+22
+00:02:06.730 --> 00:02:11.730
+右边的计算机B正在等待其他计算机连接到它
+Computer B on the right is waiting for other computers to connect to it.
+
+23
+00:02:13.130 --> 00:02:19.700
+左边的计算机A想要与bee g 通信 尽管它在这里是作为服务器绘制的
+Computer A on the left wants to communicate with be E.G.. though it's drawn here as a server.
+
+24
+00:02:19.860 --> 00:02:22.840
+它可能是运行网络浏览器的移动电话
+It could be a mobile phone running a web browser.
+
+25
+00:02:23.580 --> 00:02:26.100
+A和B建立连接
+A and B set up a connection.
+
+26
+00:02:26.900 --> 00:02:32.710
+现在 当连接处于正确状态时 该数据在网络上传播 并且可以读取它
+Now. when a right state of the connection. this data travels over the network. and be can read it.
+
+27
+00:02:34.110 --> 00:02:40.100
+类似地 如果B处于正确的连接状态 则该日期在网络中传播 并且A可以读取它
+Similarly. if B right state of the connection. that date of travels over the network. and A can read it.
+
+28
+00:02:42.540 --> 00:02:51.070
+任何一方都可以关闭连接 例如 当web浏览器完成从web服务器请求数据时 它可以关闭连接
+Either side can close the connection. e.g.. when the web browser is done requesting data from the web server. it can close the connection.
+
+29
+00:02:52.900 --> 00:02:56.820
+类似地 如果服务器愿意 我们也可以关闭连接
+Similarly. if the server wants to. we can close the connection as well.
+
+30
+00:02:57.540 --> 00:03:02.800
+如果你曾经在浏览器中看到错误消息说 连接重置由peer 这就是它的意思
+If you've ever seen an error message in a web browser saying. connection reset by peer. that's what this means.
+
+31
+00:03:02.960 --> 00:03:06.300
+web服务器在浏览器没有预料到的情况下关闭了连接
+The web server closed the connection when the web browser wasn't expecting it.
+
+32
+00:03:06.750 --> 00:03:08.830
+当然 服务器也可以拒绝连接
+Of course. the server can refuse the connection as well.
+
+33
+00:03:08.990 --> 00:03:15.410
+您可能看到过拒绝连接的消息 或者浏览器等待很长时间 因为服务器甚至没有响应拒绝
+You've probably seen connection refuse messages. or have a browser wait for a long time because the server isn't even responding with the refusal.
+
+34
+00:03:16.500 --> 00:03:22.660
+现在我们已经了解了网络应用程序通信的基本方式 让我们来看看我们的第一个示例 WorldWideWebb
+Now that we've seen the basic way networked applications communicate. let's look at our 1st example. the World Wide Webb.
+
+35
+00:03:22.860 --> 00:03:28.780
+全球韦布使用一种叫做ACDP的东西 它代表超文本传输协议
+The Worldwide Webb uses something called ACDP. which stands for Hypertext Transfer Protocol.
+
+36
+00:03:28.780 --> 00:03:35.500
+当您在浏览器中看到ACTP煤和斜杠时 这意味着它正在使用ACTP进行通信
+When you see ACTP coal and Slash slash in your browser. that means it's communicating using ACTP.
+
+37
+00:03:37.120 --> 00:03:40.420
+我们将在后面的课程中更深入地探讨HCTB的细节
+We'll dig much deeper to the details of HCTB later in the course.
+
+38
+00:03:40.580 --> 00:03:44.140
+我们将讨论应用程序 现在 我只会给出一个非常高水平的概述
+We will cover applications. For now. I'm just going to give a very high level overview.
+
+39
+00:03:44.980 --> 00:03:49.540
+在HDP中 客户端打开到服务器的连接并向其发送命令
+In HDP. a client opens a connection to a server and sends commands to it.
+
+40
+00:03:49.590 --> 00:03:53.390
+最常见的命令是Get 它请求一个页面
+The most common command is Get. which requests a page.
+
+41
+00:03:55.350 --> 00:03:59.350
+HTTP被设计成一种以文档为中心的程序通信方式
+HTTP was designed to be a document centric way for programs to communicate.
+
+42
+00:03:59.710 --> 00:04:11.960
+例如 如果我在浏览器中输入HTTP W-W-W 点斯坦福 I-e-d-u 浏览器会打开一个到服务器的连接 W-W-W 执行斯坦福 D-E-D-U 并发送一个获取站点根页面的请求
+E.g. if I type HTTP. W-W-W. dot Stanford. I-E-D-U in my browser. the browser opens a connection to the server. W-W-W. does Stanford. D-E-D-U. and sends a get request for the root page of the site.
+
+43
+00:04:13.120 --> 00:04:19.580
+服务器接收其有效性的请求检查 用户可以访问该页面并发送响应
+The server receives the request checks of its valid and the user can access that page and sends a response.
+
+44
+00:04:19.820 --> 00:04:22.950
+响应有一个与之相关的数字代码 例如
+The response has an numeric code associated with. e.g.
+
+45
+00:04:23.110 --> 00:04:29.970
+如果服务器向get发送一个200okay响应 这意味着请求已被接受 响应的其余部分具有文档数据
+if the server sends a 200 okay response to a get. this means that the request was accepted. and the rest of the response has the document data.
+
+46
+00:04:33.150 --> 00:04:58.390
+在ww Stanford D-E-D网页的例子中 Twitter关心响应将包括描述斯坦福主页的超文本 尽管其他类型的请求 如putdelete和info 以及其他响应 如400 这意味着有一个糟糕的请求 可能是畸形的 因为80是他的文档中心客户端 客户端请求 名称 文件 HTP都是一个Asky
+In the example of the ww dot Stanford. D-E-D webpage. a Twitter care response would include the hypertext that describes the main Stanford page. though other kinds of requests. such as put delete and info. as well as other responses. such as 400. which means that there was a bad request. may be was malformed. because 80 to be his document centre clients. client requests. name. a file. HTP is all An Asky.
+
+47
+00:04:58.550 --> 00:05:03.320
+文本 它是人类可读的 向斯坦福大学提出申请的开头是这样的
+Text. Its human readable. E.g. The beginning of a gut request for Stanford looks like this.
+
+48
+00:05:03.340 --> 00:05:06.110
+一开始
+The beginning
+
+49
+00:05:06.320 --> 00:05:07.640
+一个成功的回应
+of a response to a successful
+
+50
+00:05:07.800 --> 00:05:14.480
+请求看起来像这样 基本模式是简单客户端
+request looks like this. The basic model is simple client.
+
+51
+00:05:14.640 --> 00:05:17.240
+客户端通过写入连接来发送请求
+A client sends a request by writing to the connection.
+
+52
+00:05:17.400 --> 00:05:23.140
+服务器读取该请求 处理它 并向连接写入响应 然后客户机读取该响应
+The server reads this request. process it and writes a response to the connection. which the client then reads.
+
+53
+00:05:25.300 --> 00:05:26.590
+我们来看第二个
+Let's look at a 2nd
+
+54
+00:05:26.840 --> 00:05:32.630
+应用程序 比特Torrent BitTorrent是一种允许人们共享和交换大文件的程序 不像Webb
+application. bit Torrent. Bit Torrent is a program that allows people to share and exchange large files. unlike the Webb. where a
+
+55
+00:05:32.790 --> 00:05:40.310
+客户端从服务器请求文档 一个客户端从其他客户端请求文档 因此他们的单个客户端可以向许多其他客户端请求
+client request documents from a server in bittorn. a client request documents from other clients. so their single client can request from many others.
+
+56
+00:05:40.410 --> 00:05:44.930
+并行执行 Bittorn将文件分解成称为块的数据块
+In parallel. Bit torn breaks files up into chunks of data called pieces.
+
+57
+00:05:44.930 --> 00:05:51.920
+当一个客户端从另一个客户端下载一个完整的作品时 它会告诉其他客户端它拥有这个作品 他们可以下载它
+When a client downloads a complete piece from another client. it then tells other clients it has that piece. they can download it to.
+
+58
+00:05:52.340 --> 00:05:58.930
+这些协作客户机的集合称为群集 因此我们讨论客户机加入群集或离开群集
+These collections of collaborating clients are called swarms. so we talk about a client joining or leaving the swarm.
+
+59
+00:05:59.730 --> 00:06:08.070
+位图使用了与万维网韦伯完全相同的机制 都是可靠的方向 字节流 但它的使用方式稍微复杂一些
+Bitchart uses the exact same mechanism as the World Wide Webb. are reliable by directional. bystream. But it uses it in a slightly more complex way.
+
+60
+00:06:08.370 --> 00:06:13.270
+当客户端想要下载一个文件时 它首先必须找到一个叫做torrent文件的东西
+When the client wants a download a file. it 1st has to find something called a torrent file.
+
+61
+00:06:13.350 --> 00:06:18.480
+通常你可以用万维网找到它 然后用HTTP下载它
+Usually you find this using the World Wide Webb and download it using you guessed it HTTP.
+
+62
+00:06:19.000 --> 00:06:23.520
+种子文件描述了关于您想要下载的数据文件的一些信息
+The torrent file describes some information about the data file you want a download.
+
+63
+00:06:23.560 --> 00:06:26.980
+它还告诉我们谁是追踪者
+It also tells bit torn about who the tracker is.
+
+64
+00:06:27.140 --> 00:06:34.290
+对于该洪流 跟踪器是一个不跟踪 因此什么客户端是群的成员的名称
+For that torrent. a tracker is a no that keeps track. hence the name of what clients are members of the swarm.
+
+65
+00:06:35.390 --> 00:06:43.030
+要加入一个激流 您的客户端通过其EDP再次联系跟踪器 以请求其他客户端列表
+To join a torrent. your client contacts the tracker again over its EDP to request the list of other clients.
+
+66
+00:06:44.160 --> 00:06:49.760
+您的客户端打开到这些其他客户端的连接 并开始请求文件的片段
+Your client opens connections to some of these other clients and starts requesting pieces of the file.
+
+67
+00:06:49.760 --> 00:06:52.760
+这些客户端反过来可以自己请求零件
+These clients in turn can request pieces on their own.
+
+68
+00:06:53.040 --> 00:06:59.300
+此外 当一个新客户端加入这个表单时 跟踪器可能会告诉这个新客户端连接您的客户端
+Furthermore. when a new client joins this form. the tracker might tell this new client to connect your client.
+
+69
+00:06:59.720 --> 00:07:06.910
+因此 客户端和服务器之间不是单一的连接 而是客户端之间密集的连接图 动态地交换数据
+So rather than a single connection between a client and a server. you have a dense graph of connections between clients. dynamically exchanging data.
+
+70
+00:07:08.110 --> 00:07:12.690
+第三个也是最后一个应用程序 让我们看看流行的语音聊天和视频服务Skype
+For a 3rd and final application. let's look at the Skype. the popular voice chat and video service.
+
+71
+00:07:12.850 --> 00:07:17.800
+Skype是一个专有系统 没有任何关于内部如何工作的官方文件
+Skype is a prietary system. Doesn't have any official documentation on documentation on how it works internally.
+
+72
+00:07:18.140 --> 00:07:23.800
+2008年 哥伦比亚大学的一些研究人员通过观察风 天空 客户端发送信息的位置 弄清了它的工作原理
+In 2008. some researchers a Columbia figured out mostly how it works by looking at wherein wind sky. clients send messages.
+
+73
+00:07:24.190 --> 00:07:26.650
+那些信息是加密的 他们看不进去
+The messages were encrypted. those they couldn't look inside.
+
+74
+00:07:26.870 --> 00:07:36.480
+然而 在2011年 一个ThemeBushman对协议进行了逆向工程 并发布了开放源代码 所以现在我们对协议在最简单的模式下是如何工作的有了更好的了解
+In 2011. however. a Theme Bushman of reverse engineered the protocol and published open source code. so now we have a better sense of how the protocol works in its most simple mode.
+
+75
+00:07:36.640 --> 00:07:41.380
+当你想在Skype中呼叫某人时 它是一个简单的客户端服务器交换 有点像HTTP
+When you want to call someone in Skype. it's a simple client server exchange. sort of like HTTP.
+
+76
+00:07:41.730 --> 00:07:45.610
+你打开项圈 打开与接收者的连接
+You the collar. open a connection to the recipient.
+
+77
+00:07:46.970 --> 00:07:52.180
+如果对方接听你的电话 你们就开始交换语音 视频或聊天数据
+If the recipient accepts your call. you start exchanging voice video or chat data.
+
+78
+00:07:52.220 --> 00:07:57.140
+但与网络不同的是 在网络中 服务器中只有一个客户端 而在天空中 你有两个客户端
+But unlike the web. where there's a client in a server. in the sky case. you have two clients.
+
+79
+00:07:57.570 --> 00:08:03.910
+因此 不是一台个人电脑向专用服务器请求东西 而是两台个人电脑相互请求数据
+So rather than having a personal computer request something from a dedicated server. you have two personal computers requesting data from each other.
+
+80
+00:08:04.170 --> 00:08:08.270
+这种差异对Skype的工作有很大的影响
+This difference turns out of a really big implication to house quite Skype works.
+
+81
+00:08:09.790 --> 00:08:14.590
+这种复杂性来自一种叫做NAT的东西 或网络地址转换
+The complication comes from something called a NAT. or network address translate.
+
+82
+00:08:14.920 --> 00:08:19.220
+这是现在随处可见的 一个小型的家用无线路由器
+That's are everywhere today. a small home wireless router than that.
+
+83
+00:08:19.380 --> 00:08:22.170
+当手机连接到互联网时 它就在小睡之后
+When a mobile phone connects the Internet. it's behind a nap.
+
+84
+00:08:22.210 --> 00:08:24.350
+我们将在课程中更详细地介绍它们
+We'll cover them in greater detail. litter in the course.
+
+85
+00:08:24.510 --> 00:08:34.160
+但是现在 您所需要知道的是 如果您位于网络后面 那么您可以打开到Internet的连接 但Internet上的其他节点不能轻松地打开到您的连接
+But for now. all you need to know is that if you're behind a net. then you can open connections out to the Internet. but other nodes on the Internet can't easily open connections to you.
+
+86
+00:08:34.220 --> 00:08:45.710
+在这个例子中 这意味着客户端B可以自由地打开到其他音符的连接 但是其他音符很难打开到客户端B的连接 这就是这个红绿梯度所显示的
+In this example. this means that Client B can open connections to other notes freely. but it's very hard for other notes to open connections to client B. that's what this red green gradient is showing.
+
+87
+00:08:45.870 --> 00:08:49.990
+来自绿色边的连接可以 但来自红色边的连接就不行
+Connections coming from the green side work fine. but connections coming from the red side don't.
+
+88
+00:08:50.150 --> 00:08:55.890
+因此 这里的复杂之处在于 如果客户端A想要调用客户端B 它无法打开连接
+So the complication here is that if client A wants to call client B. it can't open a connection.
+
+89
+00:08:56.050 --> 00:08:57.350
+它不能通过NAP
+It can't go through the NAP.
+
+90
+00:08:57.390 --> 00:08:59.070
+Skype必须解决这个问题
+Skype has to work around this.
+
+91
+00:09:00.320 --> 00:09:02.780
+它使用一种叫做集合服务器的东西来做到这一点
+It does so using something called a rendezvous server.
+
+92
+00:09:02.940 --> 00:09:06.670
+当您登录到Skype时 您的客户端将打开到控制服务器网络的连接
+When you log into Skype. your client opens connections to a network of control servers.
+
+93
+00:09:06.830 --> 00:09:10.890
+在这种情况下 客户机B打开到集合服务器的连接
+In this case. client B opens a connection to the rendezvous server.
+
+94
+00:09:11.150 --> 00:09:16.500
+这工作得很好 因为服务器不在网络后面 所以客户机B可以毫无问题地打开连接
+This works fine because the server isn't behind a net. and so Client B can open connections without any problems.
+
+95
+00:09:16.840 --> 00:09:21.700
+当客户端a调用客户端B时 它向集合服务器发送一条消息
+When a client A calls Client B. it sends a message to the rendezvous server.
+
+96
+00:09:21.920 --> 00:09:27.600
+由于服务器有一个到客户端B的开放连接 它告诉我有一个调用请求
+Since the server has an open connection to client B. it tells me that there's a call request for may call.
+
+97
+00:09:27.760 --> 00:09:34.470
+客户端B上弹出对话 如果客户端BE接受呼叫 则打开到客户端a的连接
+Dialogue pops up on Client B If client BE accepts the call. then it opens a connection to Client A.
+
+98
+00:09:35.270 --> 00:09:39.650
+客户端A试图打开到客户端B的连接 但由于B在网络后面 所以无法打开连接
+Client A was trying to open a connection to Client B. but since B was behind the net. it couldn't.
+
+99
+00:09:39.810 --> 00:09:47.000
+因此 它向客户机B已经连接到的计算机发送一条消息 然后要求客户机B打开到客户机a的连接
+So instead. it sends a message to a computer that Client B is already connected to. which then asks Client B to open a connection back to client A.
+
+100
+00:09:47.160 --> 00:09:50.420
+由于ClientA在网络后面 所以这个连接可以正常打开
+Since Client A is behind the net. this connection can open normally.
+
+101
+00:09:50.690 --> 00:09:56.070
+这称为反向连接 因为它反转了启动连接的预期方向
+This called a reverse connection. because it reverses the expected direction for initiating the connection.
+
+102
+00:09:56.190 --> 00:10:05.500
+客户端A试图连接到客户端B 但相反 客户端B打开了到客户端A的连接 这发生在Skype中 因为Skype客户端通常是个人机器
+Client A is trying to connect to client B. but instead Client B opens a connection to client A. this happens in Skype. because Skype clients are typically personal machines.
+
+103
+00:10:05.800 --> 00:10:08.560
+公共可访问的网络服务器在网络后面是很少见的
+It's rare for publicly accessible web servers to be behind nets.
+
+104
+00:10:08.720 --> 00:10:13.300
+由于您希望通过Internet访问服务器 因此将其放在后面并放在外面是一个坏主意
+Since you want the server to be accessed by over on the Internet. putting it behind and out is a bad idea.
+
+105
+00:10:13.520 --> 00:10:14.950
+因此 打开连接到web服务器
+Therefore. opening connection to web servers
+
+106
+00:10:15.160 --> 00:10:23.290
+是很容易的 然而 个人电脑由于安全等原因往往落后于网络 对于Skype来说必须结合一些新的通信模式来解决问题
+is easy. Personal computers. however. often behind nets for security and other reasons that. for Skype has to incorporate some new communication patterns to work around.
+
+107
+00:10:24.280 --> 00:10:25.180
+那么天空是什么
+So what does sky
+
+108
+00:10:25.300 --> 00:10:27.040
+如果两个客户都是幕后黑手呢
+do if both clients are behind that?
+
+109
+00:10:27.220 --> 00:10:33.430
+我们无法逆转这种联系 客户端A无法打开到客户端B的连接 客户端B也无法打开到客户端A的连接
+We can't reverse the connection. Client A can't open a connection to client B and Client B can't open a connection to client A.
+
+110
+00:10:34.570 --> 00:10:39.550
+为了处理这种情况 skype引入了第二种称为中继的服务器
+To handle this case. skype introduced a 2nd kind of server called a relay.
+
+111
+00:10:39.830 --> 00:10:45.150
+继电器不能落后于音符 如果客户端和客户端都在后面 那么它们就通过中继进行通信
+Relays can't be behind notes. If both client and client beer behind that. then they communicate through a relay.
+
+112
+00:10:45.370 --> 00:10:47.710
+它们都打开到继电器的连接
+They both open connections to the relay.
+
+113
+00:10:48.490 --> 00:10:54.490
+当客户端A发送数据时 实际上通过打开的连接为它提供了两个客户端B
+When client A sends data. really affords it two client B through the connection that be open.
+
+114
+00:10:55.480 --> 00:11:08.150
+同样 倾斜B发送数据 中继通过连接提供下降a客户端AO总之 我们已经看到最常见的通信模型网络应用程序是可靠的定向比特流
+Similarly. inclined B sends data. relay affords a decline A through the connection Client AO In summary. we've seen the most common communication models network applications are reliable by directional bitestream.
+
+115
+00:11:08.380 --> 00:11:14.560
+这允许运行在不同计算机上的两个程序交换数据 并将整个网络抽象为一个简单的读写关系
+This allows two programs running on different computers to exchange data and abstracts away the entire network to a simple read write relationship.
+
+116
+00:11:15.290 --> 00:11:20.150
+虽然这是一个非常简单的通信模型 但它可以以非常有创造性和复杂的方式使用
+Although it's a very simple communication model. it can be used in very inventive and complex ways.
+
+117
+00:11:20.310 --> 00:11:23.370
+我们看了三个例子 这个世界 就像韦伯和Skype一样 有点撕裂
+We looked at three examples. The world. like Webb. bit torn and Skype.
+
+118
+00:11:23.540 --> 00:11:25.140
+世界道格 Webb是一种客户机-服务器模型
+The world Doug. Webb is a client server model.
+
+119
+00:11:25.160 --> 00:11:27.860
+客户端打开到服务器的连接并请求文档
+The client opens a connection to a server and equest documents.
+
+120
+00:11:28.020 --> 00:11:29.400
+服务器响应文档
+The server is response with the document.
+
+121
+00:11:29.890 --> 00:11:36.970
+比特流是一种码头模型 在这种模型中 成群的客户端在交换数据时相互打开连接 创建一个密集的连接网络
+Bit Torrent is appear to pier model. where swarms of clients open connections to each other in exchange pieces of data. creating a dense network of connections.
+
+122
+00:11:37.330 --> 00:11:38.910
+Skype是两者的结合
+Skype is a mix of the two.
+
+123
+00:11:39.070 --> 00:11:42.630
+当天空客户可以直接沟通时 他们很快就会出现时尚
+When sky clients can communicate directly. they do soon appear to appear fashion.
+
+124
+00:11:42.790 --> 00:11:47.970
+但有时客户端不能直接打开连接 而是通过交会中继服务器
+But sometimes the clients aren't able to open connections directly. and instead go through rendezvous relay servers.
+
+125
+00:11:48.100 --> 00:11:54.940
+你可以看到一个看起来非常简单的抽象概念 一个生物定向的 可靠的咬流 可以用在许多有趣的方面
+You can see how what looks like a very simple abstraction. a biodirectional. reliable bite stream. can be used in many interesting ways.
+
+126
+00:11:55.110 --> 00:12:03.750
+通过改变程序打开连接的方式以及不同程序的功能 我们可以创建复杂的应用程序 从文档检索到群集下载 从ib到lephony跟踪器
+By changing how programs open connections and what different programs do. we can create complex applications ranging from document retrieval to swarming downloads to ib to lephony trackers.
+
+127
+00:12:03.910 --> 00:12:11.150
+而bittorn E G 有非常不同的数据在客户端中扮演非常不同的角色 就像Skype在集合服务器中有中继除了它的客户端
+And bittorn. E.G. have very different data in a very different role in the clients. just as Skype has relays in rendezvous servers in addition to its clients.

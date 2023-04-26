@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE generatorConfiguration
+
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+
+
+    <!-- 引入mysql-connector-java-5.1.30.jar位置 -->
+
+    <classPathEntry location="D:\idea\maven-repository\mysql\mysql-connector-java\8.0.23\mysql-connector-java-8.0.23.jar" />
+
+
+
+
+
+
+
+    <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+
+        <commentGenerator>
+
+            <!--  去掉所有生成自带的注释-->
+            <property name="suppressAllComments" value="true" />
+            <property name="suppressDate" value="true"/>
+
+        </commentGenerator>
+
+
+
+        <!-- 数据库连接 -->
+
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/xyjx?serverTimezone=UTC"
+                        userId="root"
+                        password="133798">
+
+            <!--
+            Mysql不支持schema或者catalog，需要添加这个
+            目的是解决逆向工程会生成别的数据库的同名表的问题
+            -->
+            <property name="nullCatalogMeansCurrent" value="true"/>
+            <property name="nullSchemaMeansCurrent" value="true"/>
+        </jdbcConnection>
+
+
+
+        <!--
+
+        默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer
+
+        true，把JDBC DECIMAL 和 NUMERIC 类型解析为java.math.BigDecimal
+
+        -->
+
+        <javaTypeResolver>
+
+            <property name="forceBigDecimals" value="false" />
+
+        </javaTypeResolver>
+
+
+
+        <!--
+
+        生成model模型，对应的包路径，以及文件存放路径(targetProject)，targetProject可以指定具体的路径
+
+        也可以使用“MAVEN”来自动生成，这样生成的代码会在target/generatord-source目录下
+
+        -->
+
+        <!--对应JavaBean文件，也就是实体类-->
+
+        <javaModelGenerator targetPackage="com.ssm.web.pojo" targetProject=".\src\main\java">
+
+            <property name="enableSubPackages" value="true" />
+
+            <!-- 从数据库返回的值被清理前后的空格 -->
+
+            <property name="trimStrings" value="true" />
+
+        </javaModelGenerator>
+
+
+
+        <!--对应的mapper.xml文件 -->
+
+        <sqlMapGenerator targetPackage="com.ssm.web.mapper" targetProject=".\src\main\resources">
+
+            <property name="enableSubPackages" value="true" />
+
+        </sqlMapGenerator>
+
+
+
+        <!-- 对应的Mapper接口类文件 -->
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.ssm.web.mapper" targetProject=".\src\main\java">
+
+            <property name="enableSubPackages" value="true" />
+
+        </javaClientGenerator>
+
+
+
+        <!-- 生成那些表，tableName对应数据库表，domainObjectName对应实体类名 -->
+        <!--
+        生成表时mybatis可以对生成策略进行配置
+        enableCountByExample="true" enableUpdateByExample="false"
+        enableDeleteByExample="false" enableSelectByExample="false"
+        selectByExampleQueryId="false"
+        -->
+
+        <!--<table tableName="course" domainObjectName="Course" />-->
+        <!--<table tableName="user" domainObjectName="User" />-->
+        <table tableName="homework_detail" domainObjectName="HomeworkDetail" />
+        <table tableName="homework" domainObjectName="Homework" />
+        <!--<table tableName="homework_score" domainObjectName="HomeworkScore" />-->
+        <!--<table tableName="question" domainObjectName="Question" />-->
+        <!--<table tableName="reply" domainObjectName="Reply" />-->
+
+
+
+
+    </context>
+
+</generatorConfiguration>

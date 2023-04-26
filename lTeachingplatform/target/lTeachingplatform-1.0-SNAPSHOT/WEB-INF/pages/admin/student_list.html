@@ -1,0 +1,72 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>学生列表</title>
+    <div th:replace="~{common :: common_head}"></div>
+</head>
+<body>
+<div th:replace="~{common :: head_nav}"></div>
+<div class="row">
+    <div th:replace="~{common :: left_nav}"></div>
+
+    <div class="col-md-10">
+        <div class="content">
+            <ol class="breadcrumb">
+                <li class="active"><a href="#">管理后台</a></li>
+                <li class="active">课件资料</li>
+                <li>课件管理</li>
+            </ol>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">课件列表</h3>
+                </div>
+                <table id="admin_table" class="table table-striped table-hover table-condensed">
+                    <tr class="text text-primary">
+                        <th class="text-left">ID</th>
+                        <th class="text-center">学生姓名</th>
+                        <th class="text-center">密码</th>
+                        <th class="text-center">邮箱</th>
+                        <th class="text-center">操作</th>
+                    </tr>
+                    <tr th:each="student : ${studentList}" th:object="${student}">
+                        <th  th:text="*{id}" class="text-left">ID</th>
+                        <th th:text="*{userName}" class="text-center">学生姓名</th>
+                        <th th:text="*{pwd}" class="text-center">密码</th>
+                        <th th:text="*{email}" class="text-center">邮箱</th>
+                        <th class="text-center">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </th>
+                    </tr>
+                </table>
+                <div class="pull-right">
+                    <!--分页begin-->
+                    <ul id="pagintaion" class="pagination" th:object="${studentPageInfo}">
+                        <li th:if="*{hasPreviousPage}">
+                            <a th:href="@{'/admin/student_list.do/'+*{prePage}}">
+                                <span><- 上页</span>
+                            </a>
+                        </li>
+                        <li th:each="count : *{getNavigatepageNums()} ">
+                            <a th:text="${count}" th:href="@{'/admin/student_list.do/'+${count}}">1</a>
+                        </li>
+                        <li th:if="*{hasNextPage}">
+                            <a th:href="@{'/admin/student_list.do/'+*{nextPage}}">
+                                <span>下页 -></span>
+                            </a>
+                        </li>
+                    </ul>
+                    <!--分页end-->
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<div th:replace="~{common :: footer}"></div>
+<div th:replace="~{common :: common_srcipt}"></div>
+
+
+</body>
+
+</html>

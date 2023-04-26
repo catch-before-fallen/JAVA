@@ -1,0 +1,350 @@
+WEBVTT
+
+0
+00:00:00.300 --> 00:00:04.060 
+This video is about the architectural principle we call encapsulation.
+
+1
+00:00:04.620 --> 00:00:09.270 
+Encapsulation is the result of what happens when you combine layering and packet switching.
+
+2
+00:00:09.670 --> 00:00:13.230 
+We want to break up our data into discreet units that we call packets.
+
+3
+00:00:13.430 --> 00:00:17.030 
+However, each packet contains data from multiple layers.
+
+4
+00:00:17.290 --> 00:00:19.030 
+When you send a TCP segment,
+
+5
+00:00:19.310 --> 00:00:24.330 
+e.g., it's sitting inside an IP packet, which is, in turn sitting inside an ethanette frame.
+
+6
+00:00:25.070 --> 00:00:35.220 
+Encapsulation is how this works. Encapsulation is the principle by which you organize information and packets so that you can maintain layers yet let them share the contents of your packets.
+
+7
+00:00:37.020 --> 00:00:41.780 
+Recall that layering let you take a complex system and break it down into smaller parts.
+
+8
+00:00:41.800 --> 00:00:45.880 
+Each layer provides a service, an abstraction of the network to the layers above.
+
+9
+00:00:46.260 --> 00:00:48.920 
+It provides a subtraction by using the layer blow it.
+
+10
+00:00:49.140 --> 00:00:53.260 
+Each layer is self contained, so as long as it provides the surface expected of it.
+
+11
+00:00:53.420 --> 00:00:59.490 
+Layers above don't need to worry about how this separation of concerns which each layer can evolve independently.
+
+12
+00:00:59.610 --> 00:01:01.470 
+Just as IP at the nower.
+
+13
+00:01:01.630 --> 00:01:05.450 
+Claire doesn't need to have to worry about changes to TCP at the transport layer.
+
+14
+00:01:05.560 --> 00:01:09.920 
+Application layers, such as ACDP don't have to worry about changes to TCP.
+
+15
+00:01:10.000 --> 00:01:17.920 
+E.g. the past few years, most operating systems have changed the exact TCP algorithms they used to better handle increasing network speeds.
+
+16
+00:01:18.180 --> 00:01:21.960 
+But a web browser works fine using both the old algorithms and the new ones.
+
+17
+00:01:22.350 --> 00:01:30.030 
+Note that this picture of layers uses the seven layer OSI model, so let's crunch back down to the four layer model.
+
+18
+00:01:30.830 --> 00:01:36.590 
+Encapsulation is the principle that lets us take protocol layers and let them easily share the storage within a packet.
+
+19
+00:01:36.880 --> 00:01:39.860 
+It's our layering manifest in the actual data representation.
+
+20
+00:01:40.620 --> 00:01:48.820 
+The way this works is each protocol layer has some heads, followed by its payload, followed by some footers, e.g.
+
+21
+00:01:48.980 --> 00:01:51.920 
+an IP packet header has a source address in a destination address.
+
+22
+00:01:52.360 --> 00:01:58.180 
+To send a TCP segment with IP, we make the TCP format the payload of the IP packet.
+
+23
+00:01:58.520 --> 00:02:02.700 
+In this way, the pack IP packet encapsulates the TCP segment.
+
+24
+00:02:02.920 --> 00:02:04.980 
+IP doesn't know or care what its payload is.
+
+25
+00:02:05.140 --> 00:02:07.040 
+It just delivers packets to an end host.
+
+26
+00:02:07.360 --> 00:02:14.340 
+When the packet arrives, the host looks inside the payload, see that it's a TCP segment and process it accordingly.
+
+27
+00:02:15.460 --> 00:02:17.410 
+So here's a more complete example.
+
+28
+00:02:17.570 --> 00:02:22.470 
+Let's say that you're browsing the web using a computer connected through Wi Fi, wireless ethanol.
+
+29
+00:02:23.350 --> 00:02:26.670 
+Your web brows that generates an HTTP get request.
+
+30
+00:02:26.740 --> 00:02:30.460 
+This get request is the payload of a TCP segment.
+
+31
+00:02:30.640 --> 00:02:35.670 
+The TCP segment, in capsulating the HTTP get becomes the payload of an IP packet.
+
+32
+00:02:36.230 --> 00:02:43.570 
+This ip packet in turn encapsulating the TCP segment, and the httb get is the payload of a Wi Fi frame.
+
+33
+00:02:44.250 --> 00:02:48.170 
+If you were to look at the bites your computer sends, they'd look like this.
+
+34
+00:02:48.950 --> 00:02:59.060 
+The outermost encapsulating format is the Wi Fi frame, inside of which is an IP packet, inside of which is a TCP segment, inside of which finally is the HTTP get.
+
+35
+00:02:59.500 --> 00:03:03.620 
+So how Nick has drawn this packet brings up something you might find very confusing.
+
+36
+00:03:03.620 --> 00:03:06.580 
+It turns out there are two ways to draw packets.
+
+37
+00:03:07.000 --> 00:03:10.260 
+The difference comes from background and what part of the system you work on.
+
+38
+00:03:10.370 --> 00:03:18.720 
+Nick has drawn the packens here, where the petters are on the right, the 1st bit of the packet is on the right, and the last bit of the packet is on the left.
+
+39
+00:03:18.880 --> 00:03:22.360 
+This makes total sense as a router of which switch sends a packet.
+
+40
+00:03:22.520 --> 00:03:24.950 
+We draw the packet moving from left to right.
+
+41
+00:03:25.110 --> 00:03:28.410 
+So the 1st bit to leave the round oral switch is the one of the far right.
+
+42
+00:03:29.290 --> 00:03:34.410 
+But I draw packets the other way, where the headers are on the left and the footers are on the right, like this.
+
+43
+00:03:35.410 --> 00:03:37.810 
+This 2nd approach comes from software.
+
+44
+00:03:38.030 --> 00:03:41.570 
+It's what you'll see when you read itf documents and many other protocol specifications.
+
+45
+00:03:41.640 --> 00:03:48.120 
+The idea is that the beginning of the packet comes at address zero, so the 1st bite of the header is at address zero.
+
+46
+00:03:48.280 --> 00:03:54.220 
+Since addresses increased from left to right, this means the beginning of the packet is on the left, and the end of the packet is on the right.
+
+47
+00:03:54.270 --> 00:03:56.530 
+Of course, there isn't a right way or wrong way here.
+
+48
+00:03:56.690 --> 00:04:01.920 
+Both ways of drawing packets valuable and depend on what you're using the drawing for, so you should be comfortable with both.
+
+49
+00:04:02.040 --> 00:04:06.360 
+I'll generally draw headers on the right, and I'll generally draw them on the left.
+
+50
+00:04:06.580 --> 00:04:08.780 
+Next background is electrical engineering and switched design.
+
+51
+00:04:08.940 --> 00:04:11.040 
+Mine is computer science and protocol software.
+
+52
+00:04:13.960 --> 00:04:21.520 
+So now let's go back to NIX, example of an ap to be get inside a TCP segment inside and ibu packet inside a Wi Fi frame.
+
+53
+00:04:21.970 --> 00:04:24.750 
+Let's see what this looks like in an actual network with wire shark.
+
+54
+00:04:25.130 --> 00:04:29.310 
+Before we started this recording, I turned on wire Shark and recorded a pack of trace of a web request.
+
+55
+00:04:29.330 --> 00:04:31.690 
+Let's look at just one packet.
+
+56
+00:04:32.410 --> 00:04:43.270 
+Here we can see how wire shark tells us that it's an Internet frame inside, which is an IP packet inside, which is a TCB segment inside, which is an HP get.
+
+57
+00:04:43.620 --> 00:04:49.320 
+If I click on each of these particle headers, then wire shark actually highlights where they are on the packet.
+
+58
+00:04:49.340 --> 00:04:59.710 
+Bite This Gobbley gook below wifi comes 1st Inside wifi is IP, inside IPS TCP.
+
+59
+00:05:00.580 --> 00:05:05.140 
+And inside TCP, we can see the text of our ac to be get.
+
+60
+00:05:05.260 --> 00:05:10.380 
+This very simple approach from capsuling protocols within each other gives you tremendous flexibility.
+
+61
+00:05:10.520 --> 00:05:15.120 
+So far, we've been talking about the four layer model of something completely static and inflexible.
+
+62
+00:05:15.460 --> 00:05:16.620 
+In practice, it's not
+
+63
+00:05:16.820 --> 00:05:21.610 
+like you can actually use encapsulation to recursively layer protocols.
+
+64
+00:05:21.850 --> 00:05:29.190 
+E.g., something that's very commonly used today in offices of businesses is suddenly called a virtual private network,
+
+65
+00:05:29.460 --> 00:05:37.700 
+or VPN. With a virtual private network, you open a secure network, because secure connection to a network you trust, such as your office, e.g.
+
+66
+00:05:37.860 --> 00:05:51.080 
+using transport layer security TLS. When you communicate with the Internet and send IP packets, rather than send them normally, you send them inside this VPN connection, so the IQ packets go to your office.
+
+67
+00:05:51.100 --> 00:05:54.610 
+Now, at that point, the office network can route the normally.
+
+68
+00:05:54.910 --> 00:05:59.330 
+This lets you do things like access private, protected network resources inside your office.
+
+69
+00:05:59.350 --> 00:06:07.590 
+So rather than sprinkle network protections everywhere, you just have to be careful one service, the service that lets people log into the network over the virtual private network.
+
+70
+00:06:07.850 --> 00:06:16.510 
+You do this with the Virtual private Network, or VPN Gateway, a computer that accepts connections from permitted VPN clients and forward the traffic into the private network.
+
+71
+00:06:17.440 --> 00:06:19.200 
+So what does that look like?
+
+72
+00:06:19.200 --> 00:06:22.080 
+Let's say I'm accessing my internal company website.
+
+73
+00:06:22.080 --> 00:06:25.390 
+Well, my web browser generates an H to be get.
+
+74
+00:06:25.690 --> 00:06:33.110 
+Like usual, it puts this inside a TC be segment, which it puts inside an IP packet destined the company's internal web server.
+
+75
+00:06:33.710 --> 00:06:46.510 
+But rather than put this IP packet inside a linklair frame, I can't directly communicate with the internal web server my computer, put this IP packet inside a TLS segment, a secure segment.
+
+76
+00:06:46.540 --> 00:06:49.220 
+TLS protects the message and keeps it secret.
+
+77
+00:06:49.560 --> 00:06:55.380 
+This TLS session is inside a TCP stream that terminates at the virtual private network gateway.
+
+78
+00:06:55.420 --> 00:07:01.620 
+So the outer TCP segment is inside an IP packet destined to the virtual private network gateway.
+
+79
+00:07:01.960 --> 00:07:06.500 
+We put this outer IKI packet inside a link frame and send it to the next abnormal.
+
+80
+00:07:06.880 --> 00:07:21.660 
+So it looks like this. ACDP inside, TCP inside IP inside, TLS inside, TCP inside IP inside.
+
+81
+00:07:21.900 --> 00:07:26.540 
+Now, you've learned about a capsulation, the principle that unifies layering and packets switching.
+
+82
+00:07:27.100 --> 00:07:33.260 
+Encapsulation is how we take protocol layers and assemble them into packets in a way that's flexible and maintains their separation of concerns.
+
+83
+00:07:33.350 --> 00:07:38.030 
+You saw an example of a computer how a computer can encapsulate a ribquat rip.
+
+84
+00:07:38.110 --> 00:07:40.310 
+Okay, I'm going to stop this slight again.
+
+85
+00:07:47.910 --> 00:07:52.550 
+Now, you've heard about encapsulation, the principle that unifies layering and packet switching.
+
+86
+00:07:53.470 --> 00:08:00.590 
+Encapsulation is how we take protocol layers and assemble them into packets in a way that's flexible and maintains the separation of concerns.
+

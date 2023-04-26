@@ -1,0 +1,450 @@
+WEBVTT
+0
+00:00:00.900 --> 00:00:06.260
+当互联网最初被设计出来时 它是基于一个有争议的革命性思想分组交换
+When the Internet was 1st designed. it was based on a controversial revolutionary idea packet switching.
+
+1
+00:00:06.620 --> 00:00:11.820
+如今 建立网络似乎是一种简单明了的方式 但过去并非如此
+Nowadays. it seems straightforward in the obvious way to build networks. but that wasn't always the case.
+
+2
+00:00:12.120 --> 00:00:16.310
+这是一个非常简单的想法 但是 当然 就像简单的想法一样 有很多有趣的想法
+It's a very simple idea. But of course. as it is with simple ideas. there are many interesting
+
+3
+00:00:16.330 --> 00:00:18.730
+一旦你把它付诸实践 就会产生影响
+implications that arise once you put it in a practice.
+
+4
+00:00:18.990 --> 00:00:21.430
+我们将用整整一周的时间来学习分组交换及其
+We'll spend an entire week of the course on packet switching and its
+
+5
+00:00:21.870 --> 00:00:23.270
+但在这个视频中 我们
+implications. but in this video. we
+
+6
+00:00:23.500 --> 00:00:26.080
+提出高层次的想法和它的直接好处
+present the high level idea and its immediate benefits.
+
+7
+00:00:28.480 --> 00:00:34.280
+数据包是一个独立的数据单元 它携带着到达目的地所必需的信息
+A packet is a self contained unit of data that carries information necessary for it to reach its destination.
+
+8
+00:00:35.040 --> 00:00:41.320
+分组交换是指我们将数据分解成独立的 自我包含的数据块
+Packet switching is the idea that we break our data up into discrete. self contain chunks of data.
+
+9
+00:00:41.560 --> 00:00:47.100
+每个数据块(称为数据包)携带足够的信息 网络可以将数据包一路传送到目的地
+Each chunk. call the packet. carries sufficient information that a network can deliver the packet all the way to its destination.
+
+10
+00:00:47.580 --> 00:01:00.960
+假设我们在一个目的地有一个源和一个包的网络 在它们之间是a-B和C 当a接收到一个目的地的包时 它沿着链路发送它 当B接收到一个目的地的包时 它沿着链路发送
+So let's say we have a source in a destination and a network of packets. which is A-B and C between them. when a receives a packet for the destination. it sends it along the link to be When B receives a packet for the destination. it sends along to see.
+
+11
+00:01:01.260 --> 00:01:11.100
+当C接收到目的地的数据包时 它直接以最简单的数据包形式将其发送到目的地 每个数据包中分别独立地路由
+And when C receives a packet for the destination. it sends it to the destination directly. in the simplest form of packets. which. in each packet. is routed separately and independently.
+
+12
+00:01:11.280 --> 00:01:14.830
+例如 假设有另一个开关连接到B 称为D
+E.g.. let's say there's another switch connected to B called D.
+
+13
+00:01:15.190 --> 00:01:25.380
+B发送一个数据包后立即查看 可以将下一个数据包发送给D 或者如果下一个数据包也到达目的地 它将发送两个数据包回来查看
+Immediately after sending a packet to see. B can send the next packet to D. or if the next packet were also to the destination. it would send two packets back to back to see.
+
+14
+00:01:26.660 --> 00:01:29.020
+这里有一个简单的包交换的定义
+Here's a simple definition of packet switching.
+
+15
+00:01:29.860 --> 00:01:35.020
+意味着对于每个到达的数据包 我们独立地选择它的传出链路
+Means that independently. for each arriving packet. we pick its outgoing link.
+
+16
+00:01:35.320 --> 00:01:39.580
+如果链接是空闲的 我们就发送它 否则我们就保留这个包
+If the link is free. we send it else we hold the packet for later.
+
+17
+00:01:41.060 --> 00:01:43.700
+这里有一个包交换如何工作的例子
+Here's one example of how packet switching can work.
+
+18
+00:01:43.750 --> 00:01:50.250
+每个数据包都包含一个明确的路由 指定了一路到目的地的每个数据包交换的想法
+Each packet contains an explicit route specifying the ideas of each packet switch along the way. all the way to the destination.
+
+19
+00:01:50.410 --> 00:01:54.870
+我们称之为自路由 或者源路由 因为源指定了路由
+We call this self routing. or source routing. because the source specifies the route.
+
+20
+00:01:55.190 --> 00:02:02.210
+当源发送一个数据包时 它放入数据包a-b 它放入数据包a-b和C 然后是目的地
+When the source sends a packet. it puts in the packet A-B. it puts in the packet A-B and C. and then the destination.
+
+21
+00:02:02.630 --> 00:02:13.310
+它把数据包转发出去 A 查看header内部 看到B的下一个顶部 所以它将数据包转发到B发送的下一个顶部 看到C的下一个顶部 C说它看到最后一个顶部是目的地
+It forwards the packet away. A. looks inside the header and sees the next top his B. so it forwards the packet to be B sends the next. sees the next top at C and C say it sees the last top is the destination.
+
+22
+00:02:13.530 --> 00:02:20.290
+事实证明 Internet支持这种源路由 但它通常被关闭 因为它会引发严重的安全问题
+Turns out. the Internet supports this source routing. but it's generally turned off because it raises big security issues.
+
+23
+00:02:20.290 --> 00:02:29.810
+一个简单的优化 也是当今互联网最常做的是在每个交换机上放置少量的状态 它告诉在下一个顶部发送数据包
+One simple optimization. and what the Internet mostly does to day is to place a small amount of state in each switch. which tells at which next top to send packets to.
+
+24
+00:02:30.040 --> 00:02:33.200
+例如 一个交换机可以有一个目的地址表和下一个顶部
+E.g.. a switch can have a table of destination addresses and the next top.
+
+25
+00:02:33.360 --> 00:02:40.340
+当它收到一个包时 它会查找桌面 查找表中的地址 并将包发送到相应的下一个顶部
+When it receives a packet. it looks up the desk. the address in the table. and sends the packet to the appropriate next top.
+
+26
+00:02:40.540 --> 00:02:45.340
+在此模型中 数据包需要携带的所有数据包都是目的地址
+In this model. all the packets packet needs to carry is the destination address.
+
+27
+00:02:45.610 --> 00:02:49.230
+利用地址 沿途的每一次切换 都能做出正确的决定
+Using the address. each switch along the way. can make the right decision.
+
+28
+00:02:49.390 --> 00:02:55.610
+例如 在我们的网络中 这里a的表表示到达目的地的数据包应该去交换机B
+E.g.. in our network. here. a's table says the packets to destination should go to switch B switch.
+
+29
+00:02:55.770 --> 00:02:59.510
+蜜蜂表说到目的地的包裹应该去换海 等等
+Bees table says packets to destination should go to switch sea. and so on.
+
+30
+00:03:00.990 --> 00:03:03.510
+分组交换有两个非常好的特性
+Packet switching has two really nice properties.
+
+31
+00:03:03.780 --> 00:03:07.560
+第一 交换机可以为每个包做出单独的本地决策
+The 1st is that a switch can make individual. local decisions for each packet.
+
+32
+00:03:07.860 --> 00:03:09.500
+它不需要在包上保留额外的状态
+It doesn't need to keep extra state on the packets.
+
+33
+00:03:09.660 --> 00:03:15.970
+它可以查看两个数据包是否到达相同的目的地 即使许多数据包是某个更大的传输协议的一部分
+It's seen whether two packets go to the same destination. even if many packets are part of some larger transfer protocol.
+
+34
+00:03:16.130 --> 00:03:17.970
+开关不需要知道也不需要关心这些
+The switch doesn't need to know or care this.
+
+35
+00:03:17.990 --> 00:03:23.670
+它不需要知道有些数据包是skype呼叫 有些是Webb请求 还有一些仍然是对您的计算机的更坚定的更新
+Which doesn't need to know that some packets are a skype call. others are a Webb requests. and others still are a firmer update for your computer.
+
+36
+00:03:23.830 --> 00:03:27.530
+它只是为了它的数据包 这大大简化了开关
+It just for its packets. This greatly simplifies the switch.
+
+37
+00:03:28.450 --> 00:03:33.770
+第二 它可以让我们有效地切换 在多方之间共享链接
+The 2nd is that it lets us switch efficiently share a link between many parties.
+
+38
+00:03:33.980 --> 00:03:37.860
+例如 假设家里有一个无线路由器 两个人都在笔记本电脑上浏览互联网
+E.g. consider a wireless router in a home with two people browsing the Internet in their laptops.
+
+39
+00:03:38.020 --> 00:03:43.950
+如果一个人正在阅读一个页面 那么另一个人就可以以该链接的全速下载文件
+If one person is reading a page. then the other person can download a file at the full speed of the link.
+
+40
+00:03:44.150 --> 00:03:48.510
+如果第一个人开始加载一个网页 链接可以在他们两人之间
+If the 1st person starts loading a web page. the link can bere between two of them.
+
+41
+00:03:48.770 --> 00:03:52.550
+一旦下载完成 第一个人就可以使用该链接的全速
+Once the download completes. the 1st person can use the full speed of the link.
+
+42
+00:03:52.670 --> 00:03:57.040
+这两点非常重要 所以要更详细地讨论这两点
+These two points are really important. so go to some greater detail on both of them.
+
+43
+00:03:57.600 --> 00:04:01.340
+当然 当我们交流时 我们通常不会只发送一个包
+Of course. when we communicate. we don't usually send only one packet.
+
+44
+00:04:01.500 --> 00:04:06.540
+我们发送许多 例如 一个语音由许多连续的数据包组成 都是同一通信的一部分
+We send many. e.g. a voice cool consists of many consecutive packets. all part of the same communication.
+
+45
+00:04:06.840 --> 00:04:09.340
+我们称这个数据包序列为流
+We call this sequence of packets a flow.
+
+46
+00:04:09.790 --> 00:04:16.220
+更具体地说 流是属于同一端到端通信的数据报的集合
+More specifically. a flow is a collection of datagrams belonging to the same end to end communication. e.g.
+
+47
+00:04:16.380 --> 00:04:25.700
+TCP连接 首先 让我们看看每个包是如何独立路由的
+a TCP connection. Let's 1st of all. look at how each packet is routed independently.
+
+48
+00:04:27.620 --> 00:04:32.220
+因为每个包都是自包含的 所以交换机不需要知道分组或流
+Because each packet is self contained. a switch doesn't need to know about groups of packets or flows.
+
+49
+00:04:32.520 --> 00:04:36.740
+想象一下 如果每个交换机都必须跟踪每一个通过它的网络连接
+Imagine if every switch had to keep track of every single web connection passing through it.
+
+50
+00:04:36.900 --> 00:04:40.720
+这将需要大量的状态 这将很难管理
+This would require a huge amount of state that would be really hard to manage.
+
+51
+00:04:41.030 --> 00:04:46.230
+相反 独立处理每个数据包 意味着交换机可以更简单地构建 管理和故障排除
+Instead. treating each packet independently. means the switch can be much simpler to build. manage and troubleshoot.
+
+52
+00:04:47.070 --> 00:04:50.870
+开关不需要担心添加或删除每个流状态
+The switch doesn't need to worry about adding or removing with per flow state.
+
+53
+00:04:50.930 --> 00:04:58.650
+想象一下 如果每次你想要加载一个网页 你必须与路径上的每个开关通信 只是为了设置状态 这样你的请求才能通过
+Imagine if every time you wanted to load a webpage. you had to communicate with every switch along the path just to set up the state so that your request could get through.
+
+54
+00:04:59.100 --> 00:05:01.420
+这可能会让事情变得非常非常慢
+This could make things much. much slower.
+
+55
+00:05:01.620 --> 00:05:05.180
+相反 您可以只发送数据包 然后交换机适当地转发它们
+Instead. you can just send packets and the switches forward them appropriately.
+
+56
+00:05:07.040 --> 00:05:11.980
+交换机也不需要存储状态 因为交换机必须非常快
+The switches also don't need to store the state. because switches have to be really fast.
+
+57
+00:05:12.140 --> 00:05:12.630
+他们需要储存
+They need to store
+
+58
+00:05:12.860 --> 00:05:15.560
+在非常快的内存中的状态 这将是昂贵的
+the state in very fast memory. which would be expensive.
+
+59
+00:05:16.350 --> 00:05:21.490
+这使得交换机只专注于做一件事 快速有效地转发数据包
+This let switch switches focus on doing just one thing. forwarding packets quickly and efficiently.
+
+60
+00:05:23.910 --> 00:05:26.550
+最后 这意味着交换机不必担心故障
+Finally. it means switches don't have to worry about failures.
+
+61
+00:05:26.990 --> 00:05:32.570
+想象一下 例如 当你开始一个网络请求 但你的平板电脑没电了会发生什么
+Imagine. e.g. what happens when you start a web request. but then your tablet runs out of energy.
+
+62
+00:05:33.090 --> 00:05:49.200
+交换机将为请求保持puff低状态 但如果创建状态的某个节点失败 交换机需要知道如何清理 否则您可能会有数百万亿 或者 许多死流通过分组交换占用您的内存 交换机没有每个端点状态
+The switch is going to keep the puff low state for the request. but if one of the nodes that created the state fails. the switch needs to know how to clean up after otherwise you can have millions billions. or however. many of dead flows eating up your memory with packet switching a switch has no per end point state.
+
+63
+00:05:49.240 --> 00:05:51.620
+平板电脑死了 开关才不管呢
+The tablet dies. The switch doesn't care.
+
+64
+00:05:51.780 --> 00:05:54.440
+它只是意味着它停止接收来自它的数据包
+It just means that it stops receiving packets from it.
+
+65
+00:05:54.820 --> 00:05:59.000
+这样 交换机在功能上更独立于通过它发送流量的计算机
+In this way. the switch is more functionally independent of the computer sending traffic through it.
+
+66
+00:06:00.040 --> 00:06:02.380
+想想你通常是如何使用互联网的
+Think about how you typically use the Internet.
+
+67
+00:06:02.540 --> 00:06:07.310
+你的用途是生日 你打开一个网页 然后阅读它 然后加载另一个
+Your use is birthday. You lit a webpage. then read it. then load another one.
+
+68
+00:06:07.470 --> 00:06:09.910
+你从itunes上下载几首歌 然后听
+You download a few songs from itunes. then listen to them.
+
+69
+00:06:10.070 --> 00:06:12.890
+你在Netflix上播放了45分钟的节目 然后停止播放
+You stream a show from Netflix for 45 min then stop.
+
+70
+00:06:13.030 --> 00:06:24.990
+数据流量是生日 而不是总是以固定的速率发送和接收数据 使用量会随着时间的推移而上升和下降 尽管峰值和数据流量会发生大规模的变化
+Data traffic is birthday rather than always sending and receiving data at a fixed rate. Usage jumps and drops. goes up and down over time. although a large scale changes in peaks and data traffic.
+
+71
+00:06:25.410 --> 00:06:29.350
+下午3点和晚上8点通常是高的 而凌晨2点则是低的
+03:00 p.m. in the afternoon is typically high. as is 08:00 p.m.. while two in the morning is low.
+
+72
+00:06:29.660 --> 00:06:31.580
+在较小的范围内 是非常突发的
+On a smaller scale. is very bursty.
+
+73
+00:06:31.740 --> 00:06:34.000
+这些猛兽爆发通常是独立的
+And these beasts bursts are often independent.
+
+74
+00:06:34.080 --> 00:06:37.160
+假设你和你的朋友都在咖啡店浏览网页
+Let's say you and your friend are both browsing the web at a coffee shop.
+
+75
+00:06:37.320 --> 00:06:40.900
+当你加载一个新页面时 当你的朋友加载一个新页面时 它们大多是独立的
+When you load a new page. when your friend loads a new page. are mostly independent.
+
+76
+00:06:41.160 --> 00:06:43.340
+有时可能会重叠 但通常不会
+Sometimes you might overlap. but often they won't.
+
+77
+00:06:43.590 --> 00:06:50.870
+通过将你的所有流量处理为数据包 无线路由器可以非常有效地在你之间共享它的容量
+By treating all of your traffic is just packets. the wireless router can very effectively and chimp simply share its capacity between you.
+
+78
+00:06:51.030 --> 00:06:55.850
+如果你正在加载一个页面 当你的朋友正在阅读时 无线路由器可以把它所有的容量都给你的数据包
+If you're loading a page. when your friend is reading. the wireless router can give all of its capacity to your packets.
+
+79
+00:06:56.270 --> 00:07:01.150
+类似地 如果你的朋友正在加载一个页面 而你正在阅读 路由器可以在你朋友的数据包中提供它所有的容量
+Similarly. if your friend is loading a page and your reading. the router can give all of its capacity in your friends packets.
+
+80
+00:07:01.410 --> 00:07:07.270
+链接不需要部分空闲 因为你们中的一个正在使用它 如果你们都在使用它 那么链接可以在你们之间共享
+The link doesn't need to go partially idle. because one of you is in using it. and if you're both using it. then the link can be shared between you.
+
+81
+00:07:07.890 --> 00:07:16.290
+这种获取单个资源并以概率或统计的方式在多个用户之间共享的想法被称为统计多路复用
+This idea of taking a single resource and sharing it across multiple users in a probableistic or statistical way. it's called statistical multiplexing.
+
+82
+00:07:16.370 --> 00:07:22.650
+它是统计的 每个用户根据其他人使用资源的情况获得统计份额
+It's statistical and that each user receives a statistical share of the resource based on how others are using it.
+
+83
+00:07:22.840 --> 00:07:25.040
+例如 如果你的朋友正在阅读 你可以使用所有的链接
+E.g.. if your friend is reading. you can use all of the link.
+
+84
+00:07:25.140 --> 00:07:28.740
+如果你俩都在加载一个页面 你会收到一半的链接
+If both of you are loading a page. you receive half of the link.
+
+85
+00:07:30.080 --> 00:07:32.880
+因此 分组交换有两个主要的好处
+So there are two major benefits of packet switching.
+
+86
+00:07:33.280 --> 00:07:37.520
+首先 它使得交换很简单 因为他们不需要知道数据包的流
+1st. it makes the switch is simple. because they don't need to know about flows of packets.
+
+87
+00:07:38.050 --> 00:07:43.250
+第二 它可以让我们在共享一个链接的许多流之间充分地共享容量
+And 2nd. its lets us sufficiently share the capacity among many flows sharing a link.
+
+88
+00:07:45.130 --> 00:07:51.770
+这个简单的构建模块在当时是革命性的 但现在它已被接受为构建网络的常用方法
+This simple building block was revolutionary at the time. but it's now accepted as the common way to build networks.
+
+89
+00:07:51.800 --> 00:07:53.230
+你
+You.

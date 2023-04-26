@@ -1,0 +1,111 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>答疑列表</title>
+    <div th:replace="~{common :: common_head}"></div>
+</head>
+<body>
+<div th:replace="~{common :: head_nav}"></div>
+<div class="row">
+    <div th:replace="~{common :: left_nav}"></div>
+
+    <div class="col-md-10">
+        <div class="content">
+            <ol class="breadcrumb">
+                <li class="active"><a th:href="@{/admin/}">管理后台</a></li>
+                <li class="active">答疑编辑</li>
+                <li>问题列表</li>
+            </ol>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">问题列表</h3>
+                </div>
+                <table id="admin_table" class="table table-striped table-hover table-condensed">
+                    <tr class="text text-primary">
+                        <th class="text-left">ID</th>
+                        <th class="text-center">提问人</th>
+                        <th class="text-center">提问内容</th>
+                        <th class="text-center">操作</th>
+                    </tr>
+                    <tr th:each="question : ${questionList}" th:object="${question}">
+                        <th th:text="*{parent.id}" class="text-left">ID</th>
+                        <th  th:text="*{questionerobj.userName}"class="text-center">提问人</th>
+                        <th  th:text="*{parent.contains}" class="text-center">提问内容</th>
+                        <th class="text-center">
+                            <span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;|&nbsp;&nbsp;
+                            <span  class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;|&nbsp;&nbsp;
+                            <span class="glyphicon glyphicon-eye-open" ></span>
+                        </th>
+                    </tr>
+                </table>
+                <div class="pull-right">
+                    <!--分页begin-->
+                    <ul id="pagintaion" class="pagination" th:object="${questionPageInfo}">
+                        <li th:if="*{hasPreviousPage}">
+                            <a th:href="@{'/admin/question_list.do/'+*{prePage}}">
+                                <span><- 上页</span>
+                            </a>
+                        </li>
+                        <li th:each="count : *{getNavigatepageNums()} ">
+                            <a th:text="${count}" th:href="@{'/admin/question_list.do/'+${count}}">1</a>
+                        </li>
+                        <li th:if="*{hasNextPage}">
+                            <a th:href="@{'/admin/question_list.do/'+*{nextPage}}">
+                                <span>下页 -></span>
+                            </a>
+                        </li>
+                    </ul>
+                    <!--分页end-->
+                </div>
+            </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="pull-left">
+                        <a th:href="@{/admin/question_add.do}" class="btn btn-success" style="margin-top: 20px">
+                            <span class="glyphicon glyphicon-plus"></span>
+                            添加新问题
+                        </a>
+                        &nbsp;&nbsp;
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="~{common :: common_srcipt}"></div>
+<script th:inline="javascript">
+    //删除-对对应删除图标 删除时注意对应的回复也要删除
+    $('.glyphicon.glyphicon-remove').on('click', function (e)
+    {
+        var id=e.currentTarget.parentNode.parentElement.childNodes[1].innerHTML;
+        if(id!= null || id!= undefined){
+            axios({
+                method:"POST",
+
+                url:'dele_question/'+id
+
+            }).then(function (value) {
+                window.location.reload();
+                alert(" 刪除成功！")
+            })
+        }
+
+    });
+    //查看-对应查看图标
+    $('.glyphicon.glyphicon-eye-open').on('click', function (e){
+        var id=e.currentTarget.parentNode.parentElement.childNodes[1].innerHTML;
+        if(id!= null || id!= undefined){
+            axios({
+                method:"POST",
+                url:'question_list.do/show_question/'+id
+            }).then(function (value) {
+                window.open(value.request.responseURL,"_blank");
+            })
+        }
+    })
+</script>
+
+</body>
+
+</html>

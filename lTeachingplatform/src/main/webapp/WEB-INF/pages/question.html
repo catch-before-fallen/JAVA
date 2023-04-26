@@ -1,0 +1,274 @@
+<html lang="zh-cn" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>答疑 - 计算机网络双语教学平台Demo</title>
+    <!-- Bootstrap -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/default.css}" rel="stylesheet">
+    <!--IE8 css query-->
+    <!--
+    1、解决ie9以下浏览器对html5新增标签的不识别，并导致CSS不起作用的问题。
+    2、让不支持css3 Media Query的浏览器包括IE6-IE8等其他浏览器支持查询。
+    -->
+    <script th:src="@{/js/respond.min.js}"></script>
+
+    <base th:href="@{/}">
+</head>
+<body style="overflow-x: hidden;">
+<<!--导航begin-->
+<div class="top-navbar navbar navbar-default navbar-fixed-top container nav-container" role="navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">导航栏</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="index-link " th:href="@{/home.do}"><span class="glyphicon glyphicon-home"></span>&nbsp;主页</a>
+    </div>
+    <div class="navbar-collapse collapse" style="height: 1px;">
+        <ul id="main-menu" class="nav navbar-nav navbar-left">
+            <li >
+                <a th:href="@{/classplay.do}">课程播放</a>
+            </li>
+            <li >
+                <a th:href="@{/classresource.do}">课件资料</a>
+            </li>
+            <li>
+                <a th:href="@{/homework.do}">作业</a></li>
+            <li class="active">
+                <a th:href="@{/question.do}">答疑</a>
+            </li>
+        </ul>
+        <div th:if="${session.curruser} == null">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="divider"></li>
+                <li><a th:href="@{/login-inner.do}">学生登录</a></li>
+                <li><a th:href="@{/register-inner.do}">注册</a></li>
+                <li><span>&nbsp;&nbsp;</span></li>
+            </ul>
+        </div>
+        <div th:unless="${session.curruser} == null">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="divider"></li>
+                <li><a th:text="${session.curruser.userName}"></a></li>
+                <li><a th:href="@{/logout.do}">退出</a></li>
+                <li><span>&nbsp;&nbsp;</span></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--导航end-->
+<!--列表begin-->
+<div id="list" class="container">
+    <div class="row">
+        <!--左侧列表begin-->
+        <div class="col-md-8">
+
+            <div class=" panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <span class="glyphicon glyphicon-comment" style="color:#999;"></span>&nbsp;提问列表
+                    </h3>
+                </div>
+                <div class="panel panel-body" >
+                    <table id="question_table" class="table table-hover">
+                        <tr class="table table-row-cell" th:each="question,it: ${questionList}"
+                            th:object="${question}" th:onclick="gethref(event)">
+                            <td width="48" valign="top" align="center">
+                                <input th:value="*{getParent().getId()}" type="hidden"></input>
+                                <h2 th:text="${it.count}" style="max-width: 48px; max-height: 48px;"></h2>
+                            </td>
+                            <td width="10"></td>
+                            <td width="auto" valign="middle">
+                                <div>
+                                        <span th:text="*{getQuestionerobj().getUserName()}"
+                                              class="text text-info"></span>
+                                </div>
+
+                                <div><span th:text="*{getParent().getContains()}" class="span8"></span></div>
+                            </td>
+                            <td width="auto" class="text-right" valign="middle"  >
+                                <span  th:text="*{getReplycount()}" th:if="*{getReplycount() !=0}" class="span16 badge alert-success">1</span>
+                            </td>
+
+                        </tr>
+                    </table>
+                    <div class="pull-right">
+                        <!--分页begin-->
+                        <ul id="pagintaion" class="pagination" th:object="${questionPageInfo}">
+                            <li th:if="*{hasPreviousPage}">
+                                <a th:href="@{'question.do/'+*{prePage}}">
+                                    <span><- 上页</span>
+                                </a>
+                            </li>
+                            <li th:each="count : *{getNavigatepageNums()} ">
+                                <a th:text="${count}" th:href="@{'question.do/'+${count}}">1</a>
+                            </li>
+                            <li th:if="*{hasNextPage}">
+                                <a th:href="@{'question.do/'+*{nextPage}}">
+                                    <span>下页 -></span>
+                                </a>
+                            </li>
+                        </ul>
+                        <!--分页end-->
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-pencil" style="color:#999;"></span>&nbsp;提出问题</h3>
+                </div>
+                <div class="panel-body">
+                    <input type="text" id="question" placeholder="请提出有意义的问题！">
+                    <input  id=" question_button"  onclick="submit_question()" type="button" class="pull-right" value="提问">
+                </div>
+            </div>
+
+
+
+        </div>
+        <!--左侧列表end-->
+        <!--右侧列表begin-->
+        <div class="col-md-4">
+            <div th:if="${session.curruser} == null">
+                <div class=" panel panel-default">
+                    <div class="panel-body">
+                        <label>计算机网络双语教学平台</label>
+                        <hr>
+                        <div class="center">
+                            <a th:href="@{/register-inner.do}" class="btn btn-default">现在注册</a>
+                        </div>
+                        <p></p>
+
+                        <div class="center">
+                            <p>已注册同学请<a th:href="@{/login-inner.do}">登录</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div th:unless="${session.curruser} == null" th:object="${session.curruser}">
+                <div class=" panel panel-default">
+                    <div class="panel-body">
+                        <label>计算机网络双语教学平台</label>
+                        <hr>
+                        <div class="center">
+                            <p>
+                                &nbsp;&nbsp;欢迎&nbsp;<h3 th:text="*{getUserName()}" class="text-success" style="size: 20px"></h3>&nbsp;&nbsp;
+                            <span th:if="*{getRole()==0}">同学</span>
+                            <span th:if="*{getRole()==1}">老师</span>
+                            &nbsp;登录！！！！
+                            </p>
+                        </div>
+
+
+                        <div class="center">
+                            <a th:href="@{/logout.do}">退出</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class=" panel panel-default">
+            <div class="panel-heading">
+                <h5 class="panel-title"><span class="glyphicon glyphicon-fire" style="color:#999;"></span>&nbsp;热门问题
+                </h5>
+            </div>
+            <div class="list-group" th:each="question: ${session.hotQuestionplusList}" th:object="${question}">
+                <div class="list-group-item">
+                    <a th:href="@{'/question-show.do/'+*{getParent().getId()}}"
+                       th:text="*{getParent().getContains()}" class="list-group-item-text">
+                        测试提问2测试提问2测试...
+                    </a>
+                    <span th:text="*{getReplycount()}"
+                          class="list-group-item-info span16 badge alert-success">1</span>
+                </div>
+
+            </div>
+        </div>
+        </div>
+        <!--右侧列表end-->
+    </div>
+</div>
+<!--列表end-->
+<!--页脚begin-->
+<div id="footer" class="row">
+    <div>
+        <div class="center">
+            <br>
+            <p>
+                计算机网络双语教学平台 Version: 1.0.0
+            </p>
+        </div>
+        <
+    </div>
+</div>
+<!--页脚end-->
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<!-- Vue+Axios-->
+<script th:src="@{/js/vue.js}"></script>
+<script th:src="@{/js/axios.min.js}"></script>
+<!--juqery - cookie-->
+<script th:src="@{/js/jquery.cookie.js}"></script>
+<script th:inline="javascript">
+
+    var QandR=[[${questionAndReply}]];
+    // 将数据保存到服务器
+    // $.cookie("questionAndReply",QandR,"/");
+    var curruser=[[${session.curruser}]];
+    //去除前后空格的函数
+    var Trim=function (str)
+    {
+        return str.replace(/(^\s*)|(\s*$)/g, "");
+    }
+    //获取分页跳转的信息，拼接成href发送给后端
+    var gethref=function(e) {
+        var id = e.currentTarget.childNodes[1].childNodes[1].value;
+
+        var href = "question-show.do/" + id;
+        axios({
+            method: "POST",
+            url: href
+
+        }).then(function (value) {
+             window.location.replace(href)
+        });
+
+    }
+    //问题提交函数
+    var submit_question=function(){
+
+        if(curruser != null){
+            //reply 和curruser获取不到
+            var reply =Trim($('#question').val());
+            var questionid=curruser.id;
+            if(reply != null && reply != ""){
+                axios({
+                    method:"POST",
+                    url:"submit_question.do",
+                    data:{
+                        contains:reply,
+                        questioner:questionid,
+
+                    }
+                }).then(function (value) {
+                    window.location.reload();
+                })
+            }else {
+                alert("输入的内容不能为空！")
+            }
+
+
+        } else{
+            alert("请登录后再提问！")
+        }
+
+    }
+
+
+
+</script>
+
+<div id="my_modal_dialog" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div></body></html>
